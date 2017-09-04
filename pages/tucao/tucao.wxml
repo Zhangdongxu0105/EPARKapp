@@ -1,0 +1,24 @@
+<!--pages/tucao/tucao.wxml-->
+<form catchsubmit="formSubmit" catchreset="formReset">
+  <view class="container">
+    <picker  bindchange="where_bindPickerChange" value="{{where_index}}" range="{{where}}">
+              <view class="picker">
+                <text class="tuna_text" >吐哪</text>
+                <input class="tuna_addr" placeholder="点击选择地点"  value="{{where[where_index]}}"/>
+              </view>
+          </picker>
+     <picker  bindchange="what_bindPickerChange" value="{{what_index}}" range="{{what}}">
+              <view class="picker">
+                <text class="tuna_text" >吐什么</text>
+                <input class="tuna_addr" placeholder="点击选择分类"  value="{{what[what_index]}}"/>
+              </view>
+          </picker>
+    <picker  bindchange="who_bindPickerChange" value="{{who_index}}" range="{{who}}">
+              <view class="picker">
+                <text class="tuna_text" >吐谁</text>
+                <input class="tuna_addr" placeholder="点击选择吐槽对象"  value="{{who[who_index]}}"/>
+              </view>
+          </picker>
+  </view>
+</form>
+

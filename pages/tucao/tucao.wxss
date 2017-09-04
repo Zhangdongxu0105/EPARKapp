@@ -1,0 +1,31 @@
+/* pages/tucao/tucao.wxss */
+.containera{
+  height:240rpx;
+  width:710rpx;
+  display:flex;
+  flex-direction: row;
+  border-bottom:1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding:20rpx;
+  flex-flow:wrap;
+}
+.picker{
+  height:50rpx;
+  width:710rpx;
+  display:flex;
+  flex-direction: row;
+  border-bottom:1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding:20rpx;
+  flex-flow:wrap;
+}
+.tuna_text{
+  height:50rpx; 
+  width:200rpx;
+  flex-direction: row;
+  flex-flow:wrap;
+}
+.tuna_addr{
+  width:470rpx;
+  height: 40rpx;
+}

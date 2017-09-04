@@ -1,0 +1,45 @@
+<!--ecar.wxml-->
+<!--顶部轮播图 begin-->
+<view >
+    <swiper class="lunbo" id="lunbo" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" 
+    interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
+        <block wx:for="{{imgUrls}}" wx:key='' >
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" />
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+<view class="containera">
+    <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset">
+        <view class="section">
+            <view class="containera-list">
+              <text class="phonetext">E卡余额</text>
+              <input class="phone"  value="￥{{money}}" name="phone" placeholder="请输入手机号" bindblur="checkphone" type="number" maxlength="11"/>
+            </view>
+            <view class="containera-list">
+              <text class="phonetext">手机号</text>
+              <input class="phone" name="phone" placeholder="请输入手机号" bindblur="checkphone" type="number" maxlength="11"/>
+            </view>
+            <view class="containera-list">
+              <text class="phonetext">充值金额</text> 
+              <input class="phone" name="money" wx:if="{{paymoney}}" value="{{paymoney}}" bindblur="checkmoney" type="number"  maxlength="4"/>
+              <input class="phone" name="money" wx:else placeholder="请输入充值金额" bindblur="checkmoney" type="number"  maxlength="4" />
+            </view>
+        </view>
+        <view class="containera-pay"  >
+          <view class="pay_money"  wx:for="{{money_array}}"  wx:key="" >
+            <text class="pay_text" bindtap="paytap" data-money='{{item}}' style="text-align:center" >{{item}}</text> 
+          </view>
+        </view>
+
+        <!--提示在下方  暂不显示    -->
+        <!-- <view class="container">
+          <text wx:if="{{result}}" >{{result}}</text>
+        </view> -->
+        <view class="btn-area">
+            <button class="paybutton" formType="submit">微信支付</button>
+        </view>
+    </form>
+</view>
+<!--顶部轮播图 end-->

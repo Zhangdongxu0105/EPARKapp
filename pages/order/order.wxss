@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  height: 100%;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  background-color: #F2f2f2;
+  color: #939393;
+}
+.container .cart-image {
+  width: 120px;
+  height: 120px;
+}
+
+/*星星的样式*/
+.stars{
+    background-image: url("../../images/icon020.png");
+    width: 43rpx;
+    height: 43rpx;
+    background-size: 43rpx 43rpx;
+    margin-left: 40rpx;
+}
+.on{
+    background-image: url("../../images/icon019.png");
+    width: 43rpx;
+    height: 43rpx;
+    background-size: 43rpx 43rpx;
+    /*margin-left: 10px;*/
+}

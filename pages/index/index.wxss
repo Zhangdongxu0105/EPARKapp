@@ -1,0 +1,122 @@
+/* 禁止长按链接与图片弹出菜单 */
+navigator,image {-webkit-touch-callout: none;touch-callout: none;}
+.swiper_box {
+    width: 100%;
+}
+/*去掉手持设备点击时出现的透明层*/
+/* navigator,button,input {-webkit-tap-highlight-color: transparent;tap-highlight-color: transparent;} */
+input{outline:0;border:0;}
+/*文字超出隐藏*/
+.text {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+/*图片大小自适应*/
+image{width: 100%;vertical-align: top;display: block;}
+
+/*轮播begin*/
+.lunbo,.lunbo image{height: 350rpx;}
+.lunbo .wx-swiper-dots.wx-swiper-dots-horizontal{
+      margin-bottom: 10rpx;
+}
+.lunbo .wx-swiper-dot{
+    width: 14rpx;
+    display: inline-flex;
+    height: 14rpx;
+    vertical-align: sub; 
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    background:rgba(255,255,255,.5);
+    border-radius: 100%;
+}
+.lunbo .wx-swiper-dot::before{
+     content: '';
+     flex-grow: 1;
+} 
+.lunbo .wx-swiper-dot-active::before{
+     content: '';
+     flex-grow: 1;
+     background:rgba(255,255,255,1);
+     border-radius: 100%;
+}
+/*轮播end*/
+
+swiper-item image {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+.slide-image{
+    width:100%;
+    /* padding:30rpx; */
+}
+.containera-list{
+  height:280rpx;
+  width:710rpx;
+  display:flex;
+  flex-direction: row;
+  border-bottom:1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding:20rpx;
+  flex-flow:wrap;
+}
+.icon_size{
+  width:90rpx;
+  height: 90rpx;
+  padding-bottom: 50rpx;
+  padding-left: 55rpx;
+  padding-right: 20rpx;
+  display:flex;
+  flex-direction: row;
+  flex-flow:wrap;
+}
+.text{
+    width:95rpx;
+    height: 50rpx;
+    color:#000;
+    /* display:flex; */
+    padding-top: 20rpx;
+    flex-direction: column;
+    text-align: center;
+
+    display:table;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:24rpx;
+}
+/*guid广告位end*/
+/*公用title begin*/
+.floor-title {
+    height: 96rpx;
+    line-height: 96rpx;
+    text-align: center;
+    color: #222;
+    font-size: 34rpx;
+    font-weight: bold;
+    position: relative;
+    background-color: white;
+}
+.floor-title text {
+    color: #b9e1f0;
+    font-size: 30rpx;
+    padding-right: 14rpx;
+}
+.floor-title icon{
+  position: absolute;
+    top: 40rpx;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-top: 10rpx solid transparent;
+    border-bottom: 10rpx solid transparent;
+    border-left: 10rpx solid #222222;
+}
+/*公用title end*/
+/*热门活动begin  */
+.remenhuodong{
+   width:500rpx;
+  padding:70rpx;  
+}
+/*热门活动end  */
+.remenhuodong-image{
+  padding:20rpx; 
+  width: 650rpx;
+}

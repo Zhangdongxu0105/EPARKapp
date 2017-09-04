@@ -1,0 +1,129 @@
+/* ecar.wxss */
+/* 禁止长按链接与图片弹出菜单 */
+navigator,image {-webkit-touch-callout: none;touch-callout: none;}
+.swiper_box {
+    width: 100%;
+}
+/*去掉手持设备点击时出现的透明层*/
+navigator,button,input {-webkit-tap-highlight-color: transparent;tap-highlight-color: transparent;}
+input{outline:0;border:0;}
+/*文字超出隐藏*/
+.text {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+/*图片大小自适应*/
+image{width: 100%;vertical-align: top;display: block;}
+
+/*轮播begin*/
+.lunbo,.lunbo image{height: 350rpx;}
+.lunbo .wx-swiper-dots.wx-swiper-dots-horizontal{
+      margin-bottom: 10rpx;
+}
+.lunbo .wx-swiper-dot{
+    width: 14rpx;
+    display: inline-flex;
+    height: 14rpx;
+    vertical-align: sub; 
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    background:rgba(255,255,255,.5);
+    border-radius: 100%;
+}
+.lunbo .wx-swiper-dot::before{
+     content: '';
+     flex-grow: 1;
+} 
+.lunbo .wx-swiper-dot-active::before{
+     content: '';
+     flex-grow: 1;
+     background:rgba(255,255,255,1);
+     border-radius: 100%;
+}
+/*轮播end*/
+.containera-list{
+  height:50rpx;
+  width:710rpx;
+  display:flex;
+  flex-direction: row;
+  border-bottom:1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding:20rpx;
+  flex-flow:wrap;
+}
+.phonetext{
+height:50rpx; 
+width:300rpx;
+ flex-direction: row;
+ flex-flow:wrap;
+}
+.phone{
+height:50rpx; 
+width:300rpx;
+ flex-direction: row;
+ flex-flow:wrap;
+}
+
+.containera-pay{
+  height:270rpx;
+  width:100%;
+  display:flex;
+   flex-direction: row;  
+  border-bottom:1px solid #ccc;
+  border-top: 1px solid #ccc;
+   padding:20rpx;  
+  flex-flow:wrap; 
+}
+.pay_money{
+  width:180rpx;
+  height: 60rpx;
+  padding:20rpx; 
+  display:flex; 
+  border:5px solid #fff;
+  background-color: #C0C0C0;
+   /* flex-direction: row; 
+   flex-flow:wrap;  */
+}
+.pay_text{
+  /* width:150rpx;
+  height: 60rpx; */
+  margin:0 auto;
+  font-size:20x;
+}
+.btn-area{
+  height:50rpx; 
+  width:300rpx;
+  /* padding-left: 190rpx;
+  padding-right: 190rpx; */
+  margin:0 auto;
+  flex-direction: row;
+  flex-flow:wrap;
+}
+.containera_money{
+  height:50rpx;
+  width:710rpx;
+  display:flex;
+  flex-direction: row;
+  border-bottom:1px solid #ccc;
+  border-top: 1px solid #ccc;
+  padding:20rpx;
+  flex-flow:wrap;
+}
+.money_image{
+  width:50rpx;
+  height:50rpx;
+  padding-left: 305rpx;
+  display:flex; 
+  flex-direction: row; 
+  flex-flow:wrap;
+}
+.money_text{
+  text-align:center;
+  width:50rpx;
+  height:50rpx;
+  font-size:20px;
+  padding-right: 305rpx;
+  display:flex; 
+  flex-direction: row;
+  flex-flow:wrap;
+}
+.paybutton{
+  background-color: #16982B;
+}

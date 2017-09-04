@@ -1,0 +1,35 @@
+<!--顶部轮播图 begin-->
+<view >
+    <swiper class="lunbo" id="lunbo" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" 
+    interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
+        <block wx:for="{{imgUrls}}" wx:key='' >
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" />
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+<!--顶部轮播图 end-->
+<view class="containera-list">
+  <block wx:for="{{icon_count}}"  wx:key=''>
+    <navigator url="{{item.navigator_url}}" hover-class="none">
+      <image id="{{item.id}}" src="{{item.url}}" class='icon_size'>
+        <text class="text" >{{item.text}}</text>
+      </image>
+    </navigator>
+  </block>
+</view>
+
+<view>
+热门活动
+</view>
+<view class="container">
+    <swiper  indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgUrls}}" wx:key=''>
+            <swiper-item >
+                <image src="{{item}}" class="remenhuodong-image"/>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+E园资讯
