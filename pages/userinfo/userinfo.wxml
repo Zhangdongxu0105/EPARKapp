@@ -1,0 +1,57 @@
+<!--userinfo.wxml-->
+<view class="containera">
+    <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset">
+        <view class="section">
+            <view class="containera-list">
+              <text class="phonetext">账号</text>
+              <text class="userinfo-nickname"   name="phone" >{{userInfo.nickName}}</text>
+            </view>
+            <view class="containera-list">
+              <text class="phonetext">真实姓名</text>
+              <text wx:if="{{user.name}}">{{user.name}}</text>
+              <input wx:else class="phone" name="name" placeholder="请输入真实姓名"/>
+            </view>
+            <view class="containera-list">
+              <text class="phonetext">身份证号</text>
+              <text wx:if="{{user.icard}}">{{user.icard}}</text>
+              <input wx:else class="phone" name="icard" placeholder="请输入身份证号"/>
+            </view>
+            <view class="containera-list">
+              <text class="phonetext">性别</text>
+              <text wx:if="{{user.sex}}">{{user.sex}}</text>
+               <picker wx:else bindchange="bindPickerChange" value="{{sexindex}}" range="{{sexarray}}">
+                <view class="picker">
+                   <input class="phone" value='{{sexarray[sexindex]}}' name="sex" placeholder="请输入性别"/>
+                </view>
+              </picker>
+            </view>
+            <view class="containera-list">
+              <text class="phonetext">生日</text>
+              <view  class="section">
+              <text wx:if="{{user.date}}" name="date" >{{user.date}}</text>
+                <picker wx:else mode="date" value="{{date}}" start="1949-1-1" end="{{enddate}}"  name="date" bindchange="bindDateChange">
+                   <view class="picker">
+                    <input class="phone" value="{{date == false ? '' : date}}"  placeholder="请输入生日"/>
+                  </view> 
+                </picker>
+              </view>
+            </view>
+            <view class="containera-list">
+              <text class="phonetext">手机号</text>
+              <text wx:if="{{user.phonenum}}">{{user.phonenum}}</text>
+              <input wx:else class="phone" name="phonenum" placeholder="请输入E卡手机号" bindblur="checkphone" type="number" maxlength="11"/>
+            </view>
+            <view class="containera-list">
+              <text class="phonetext">公司名称</text>
+              <text wx:if="{{user.comaddr}}">{{user.comaddr}}</text>
+              <input wx:else class="phone" name="comaddr" placeholder="请选择公司名称"/>
+            </view>
+            <view class="containera-list">
+              <text class="phonetext">更多</text>
+            </view>
+             <view class="btn-area">
+            <button class="paybutton" formType="submit" >保存</button>
+        </view>
+        </view>
+    </form>
+</view>

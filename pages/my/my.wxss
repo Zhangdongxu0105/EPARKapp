@@ -1,7 +1,7 @@
 /**index.wxss**/
 .userinfo {
   display: flex;
-  flex-direction: column;
+   flex-direction: column; 
   padding: 20rpx;
   align-items: center;
   /* background: #f9f027; */

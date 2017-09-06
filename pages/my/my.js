@@ -47,6 +47,12 @@ Page({
       that.setData({
         userInfo: userInfo
       })
+      app.globalData.info = userInfo
+    })
+  },
+  imbin:function(){
+    wx.navigateTo({
+      url: '../userinfo/userinfo',
     })
   }
 })

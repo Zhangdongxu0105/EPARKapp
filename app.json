@@ -1,11 +1,14 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/logs/logs",
     "pages/my/my",
     "pages/ecar/ecar",
     "pages/order/order",
-    "pages/tucao/tucao"
+    "pages/tucao/tucao",
+    "pages/userinfo/userinfo"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,13 +30,13 @@
       },
       {
         "pagePath": "pages/logs/logs",
-        "text": "首页",
+        "text": "活动",
         "iconPath": "images/u12.png",
         "selectedIconPath": "images/u12-on.png"
       },
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
+        "text": "资讯",
         "iconPath": "images/u14.png",
         "selectedIconPath": "images/u14-on.png"
       },

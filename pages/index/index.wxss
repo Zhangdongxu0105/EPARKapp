@@ -54,7 +54,7 @@ swiper-item image {
   flex-direction: row;
   border-bottom:1px solid #ccc;
   border-top: 1px solid #ccc;
-  padding:20rpx;
+  padding:10rpx;
   flex-flow:wrap;
 }
 .icon_size{
@@ -62,7 +62,7 @@ swiper-item image {
   height: 90rpx;
   padding-bottom: 50rpx;
   padding-left: 55rpx;
-  padding-right: 20rpx;
+  padding-right: 30rpx;
   display:flex;
   flex-direction: row;
   flex-flow:wrap;
