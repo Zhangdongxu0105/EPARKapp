@@ -13,7 +13,7 @@ Page({
     // date:false,
     // phonenum:false,
     // comaddr:false,
-    user:{date:'sdfsad'},
+    user: {},
     sexarray: ['帅哥', '美女', '保密'],
     indicatorDots: true,
     autoplay: true,
@@ -29,12 +29,16 @@ Page({
     that.setData({
       userInfo: app.globalData.info
       })
+    if (that.data.user.sex) {
+      that.setData({
+        sex: that.data.user.sex
+      })
+    }
     if (that.data.user.date){
       that.setData({
         date: that.data.user.date
       })
     }
-    console.log(app.globalData.info)
   },
 
   /**
@@ -91,9 +95,12 @@ Page({
     })
   },
   bindPickerChange: function (e) {
+    var that=this
     this.setData({
-      sexindex: e.detail.value
+      sexindex: e.detail.value,
+      sex: that.data.sexarray[that.data.sexindex]
     })
+    that.data.sex = that.data.sexarray[that.data.sexindex]
   },
   checkphone: function (e) {
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/; //判断用户输入的是否为手机号
@@ -118,8 +125,9 @@ Page({
     that.setData({
       user: e.detail.value
     })
-    that.data.user['date']=that.data.date,
-      console.log(that.data.user)
+    that.data.user['date']=that.data.date
+    that.data.user['sex'] = that.data.sex
+    console.log(that.data.user)
     wx.showToast({
       title: '保存成功',
       icon: 'success',

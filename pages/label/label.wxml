@@ -1,0 +1,29 @@
+<!--pages/label/label.wxml-->
+<view class="containera">
+    <form class="page__bd" catchsubmit="formSubmit" catchreset="formReset">
+            <navigator url="../labelinfo/labelinfo?id=1" hover-class="none">
+            <view class="containera-list">
+              <text class="phonetext">技能</text>
+              <text class='labeltext' wx:if="{{skills_label}}" name='date'>{{skills_label}}</text>
+              <text class='labeltext' wx:else style="color:#808080">请选择技能标签</text>
+            </view>
+            </navigator>
+            <navigator url="../labelinfo/labelinfo?id=2" hover-class="none">
+            <view class="containera-list">
+              <text class="phonetext">兴趣</text>
+              <text class='labeltext' wx:if="{{date}}" name='date'>{{date}}</text>
+              <text class='labeltext' wx:else style="color:#808080">请选择兴趣标签</text>
+            </view>
+            </navigator>
+            <navigator url="../labelinfo/labelinfo?id=3" hover-class="none">
+            <view class="containera-list">
+              <text class="phonetext">个性标签</text>
+              <text class='labeltext' wx:if="{{date}}" name='date'>{{date}}</text>
+              <text class='labeltext' wx:else style="color:#808080">请选择个性标签</text>
+            </view>
+            </navigator>
+             <view class="btn-area">
+            <button class="paybutton" formType="submit" >保存</button>
+        </view>
+    </form>
+</view>

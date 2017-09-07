@@ -1,0 +1,6 @@
+<!--pages/labelinfo/labelinfo.wxml-->
+<view class="containera-pay"  >
+  <view class="pay_money"  wx:for="{{money_array}}"  wx:key="" >
+    <text class="pay_text" bindtap="paytap" data-money='{{item}}' style="text-align:center" >{{item}}</text> 
+  </view>
+</view>

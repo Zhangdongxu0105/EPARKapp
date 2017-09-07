@@ -1,14 +1,14 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/logs/logs",
     "pages/my/my",
     "pages/ecar/ecar",
     "pages/order/order",
     "pages/tucao/tucao",
-    "pages/userinfo/userinfo"
-    
+    "pages/userinfo/userinfo",
+    "pages/label/label",
+    "pages/labelinfo/labelinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

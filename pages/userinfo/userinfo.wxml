@@ -21,7 +21,9 @@
               <text wx:if="{{user.sex}}">{{user.sex}}</text>
                <picker wx:else bindchange="bindPickerChange" value="{{sexindex}}" range="{{sexarray}}">
                 <view class="picker">
-                   <input class="phone" value='{{sexarray[sexindex]}}' name="sex" placeholder="请输入性别"/>
+                <text wx:if="{{sexarray[sexindex]}}"  name='sex'>{{sexarray[sexindex]}}</text>
+                <text wx:else style="color:#808080">请输入性别</text>
+                    <!-- <input class="phone" value='{{sexarray[sexindex]}}' name="sex" placeholder="请输入性别"/>  -->
                 </view>
               </picker>
             </view>
@@ -31,7 +33,9 @@
               <text wx:if="{{user.date}}" name="date" >{{user.date}}</text>
                 <picker wx:else mode="date" value="{{date}}" start="1949-1-1" end="{{enddate}}"  name="date" bindchange="bindDateChange">
                    <view class="picker">
-                    <input class="phone" value="{{date == false ? '' : date}}"  placeholder="请输入生日"/>
+                    <text wx:if="{{date}}" name='date'>{{date}}</text>
+                    <text wx:else style="color:#808080">请输入生日</text>
+                    <!-- <input class="phone" value="{{date == false ? '' : date}}"  placeholder="请输入生日"/> -->
                   </view> 
                 </picker>
               </view>
@@ -46,9 +50,11 @@
               <text wx:if="{{user.comaddr}}">{{user.comaddr}}</text>
               <input wx:else class="phone" name="comaddr" placeholder="请选择公司名称"/>
             </view>
+            <navigator url="../label/label" hover-class="none">
             <view class="containera-list">
               <text class="phonetext">更多</text>
             </view>
+            </navigator>
              <view class="btn-area">
             <button class="paybutton" formType="submit" >保存</button>
         </view>
