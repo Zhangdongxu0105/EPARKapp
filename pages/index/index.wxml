@@ -34,3 +34,24 @@
     </swiper>
 </view>
 E园资讯
+<view class='news' >
+  <image class='news_image' src='{{imgUrls[0]}}'>  </image>
+</view>
+
+
+
+
+
+
+<scroll-view scroll-y="true" style="height:100%;width:100%;display:none">
+  <view class="common-list">
+    <block wx:key="id" wx:for="{{pageData}}">
+      <view class="list-item {{item.images[0] ? 'has-img': ''}}" data-id="{{item.id}}"  bindtap="toDetailPage">
+        <view class="content">
+          <text>{{item.title}}</text>
+        </view>
+        <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" class="cover"></image>
+      </view>
+    </block>
+  </view>
+</scroll-view>

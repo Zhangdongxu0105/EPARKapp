@@ -14,7 +14,13 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    money_array:[50,100,200,300,500,1000],
+    money_array:{
+                  50:50,
+                  100:100,
+                  200:190,
+                  300:280,
+                  500:450,
+                  1000:900},
     money:0,
     paymoney:false,
     result:false

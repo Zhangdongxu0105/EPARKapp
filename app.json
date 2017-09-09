@@ -8,7 +8,8 @@
     "pages/tucao/tucao",
     "pages/userinfo/userinfo",
     "pages/label/label",
-    "pages/labelinfo/labelinfo"
+    "pages/labelinfo/labelinfo",
+    "pages/news/news"
   ],
   "window": {
     "backgroundTextStyle": "light",

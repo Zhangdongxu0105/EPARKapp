@@ -29,7 +29,8 @@
         </view>
         <view class="containera-pay"  >
           <view class="pay_money"  wx:for="{{money_array}}"  wx:key="" >
-            <text class="pay_text" bindtap="paytap" data-money='{{item}}' style="text-align:center" >{{item}}</text> 
+                <text class="pay_text" bindtap="paytap" data-money='{{index}}' style="text-align:center" >{{index}}</text>
+                <text class="price_text" bindtap="paytap" data-money='{{index}}' style="text-align:center" >\n售价:{{money_array[index]}}</text> 
           </view>
         </view>
 

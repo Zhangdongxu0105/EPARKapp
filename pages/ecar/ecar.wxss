@@ -40,7 +40,7 @@ image{width: 100%;vertical-align: top;display: block;}
 /*轮播end*/
 .containera-list{
   height:50rpx;
-  width:710rpx;
+  width:700rpx;
   display:flex;
   flex-direction: row;
   border-bottom:1px solid #ccc;
@@ -50,7 +50,7 @@ image{width: 100%;vertical-align: top;display: block;}
 }
 .phonetext{
 height:50rpx; 
-width:200rpx;
+ width:200rpx;
  flex-direction: row;
  flex-flow:wrap;
 }
@@ -63,29 +63,34 @@ width:300rpx;
 
 .containera-pay{
   height:270rpx;
-  width:100%;
+  width:700rpx;
   display:flex;
-   flex-direction: row;  
+   /* flex-direction: row;   */
   /* border-bottom:1px solid #ccc; */
-  border-top: 1px solid #ccc;
-   padding:20rpx;  
-  flex-flow:wrap; 
+  /* border-top: 1px solid #ccc; */
+    padding-left:35rpx;   
+   flex-flow:wrap;  
 }
 .pay_money{
-  width:180rpx;
-  height: 60rpx;
-  padding:20rpx; 
+  width:175rpx;
+  height: 80rpx;
+  padding:15rpx; 
+  margin: 10rpx;
   display:flex; 
-  border:5px solid #fff;
-  background-color: #C0C0C0;
-   /* flex-direction: row; 
-   flex-flow:wrap;  */
+  border:1px solid #000;
+  /* background-color: #C0C0C0; */
+   /* flex-direction: row;   */
+   flex-flow:wrap;   
 }
 .pay_text{
-  /* width:150rpx;
-  height: 60rpx; */
-  margin:0 auto;
-  font-size:20x;
+  width:150rpx;
+  height: 20rpx; 
+  margin:0 auto; 
+  font-size:18px;
+}
+.price_text{
+  margin:0 auto; 
+  font-size:12px;
 }
 .btn-area{
   height:50rpx; 
@@ -98,7 +103,7 @@ width:300rpx;
 }
 .containera_money{
   height:50rpx;
-  width:710rpx;
+  width:700rpx;
   display:flex;
   flex-direction: row;
   border-bottom:1px solid #ccc;
