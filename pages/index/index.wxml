@@ -34,24 +34,46 @@
     </swiper>
 </view>
 E园资讯
-<view class='news' >
-  <image class='news_image' src='{{imgUrls[0]}}'>  </image>
-</view>
-
-
-
-
-
-
-<scroll-view scroll-y="true" style="height:100%;width:100%;display:none">
-  <view class="common-list">
+<!-- <view class="main-list-header">
+    <view class="title"><text>今日热文</text></view>
+    <view class="date"><text>{{currentDateStr}}</text></view>
+  </view> -->
+   <view class="common-list">
     <block wx:key="id" wx:for="{{pageData}}">
-      <view class="list-item {{item.images[0] ? 'has-img': ''}}" data-id="{{item.id}}"  bindtap="toDetailPage">
+      <view class="list-item {{item.images[0] ? 'has-img': ''}}" wx:if="{{item.type != 3}}" data-id="{{item.id}}" bindtap="toDetailPage">
         <view class="content">
-          <text>{{item.title}}</text>
+        <!--标题  -->
+          <view>
+            <text class='title_text'>{{item.title}}</text>
+          </view>
+
+          <!--概要  -->
+          <!-- <view>
+            <text class='outline_text'>{{item.outline}}</text>
+          </view> -->
+
+          <!--点击数量  -->
+          <view wx:if="{{item.clicksum}}" class='ckick_text'>
+            <text>{{item.clicksum}}点击</text>
+          </view>
+          <view wx:else  class='ckick_text'>
+            <text>0点击</text>
+          </view>
+
+          <!--时间  -->
+          <view  class='date_text'>
+            <text>{{item.date}}</text>
+          </view>
         </view>
+        <!--图片  -->
         <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" class="cover"></image>
+        <!--标签  -->
+        <view  class='label_text'>
+            <text>{{item.label}}</text>
+        </view>
       </view>
+      <!-- <view class="list-spliter" wx:else>
+        <text>{{item.title}}</text>
+      </view> -->
     </block>
-  </view>
-</scroll-view>
+  </view> 

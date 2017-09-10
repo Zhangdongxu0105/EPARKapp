@@ -1,4 +1,6 @@
 //index.js
+var utils = require('../../utils/util.js');
+var requests = require('../../requests/request.js');
 //获取应用实例
 var app = getApp()
 Page({
@@ -8,7 +10,178 @@ Page({
       'http://www.epark.com/group1/M00/00/00/Co1WLViBs6OAbnSBAAN9-C5dJUc591.jpg',
       'http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG',
     ],
-    pageData: {}, //列表数据
+    pageData:
+    [
+        {
+          "images": [
+            "http://pic2.zhimg.com/e97b08d1177ebc57bd9e9d8ddf17e055.jpg"
+          ],
+          "type": 0,
+          "id": 8966833,
+          "ga_prefix": "111017",
+          "title": "知乎好问题 · 时间管打算离开股份哈山东理工黑色柳丁家里开始打了个客户数量的开发卡萨丁厉害管理卡水电费拉时间到了房间拉萨的理最常见的误区有哪些？",
+          "date":'1小时前',
+          "clicksum":'9999',
+          "label":"E园早报",
+          "outline":"知乎好问题 · 时间管打算离开股份哈山东理工黑色柳丁家里开始打了个客户数量的开发卡萨丁厉害管理卡水电费拉时间到了房间拉萨的理最常见的误区有哪些？"
+        },
+        {
+          "images": [
+            "http://pic3.zhimg.com/fc30413e70df02ecbcc13fed7b35c32e.jpg"
+          ],
+          "type": 0,
+          "id": 8964409,
+          "ga_prefix": "111015",
+          "title": "宁泽涛和国家游泳队的冲突从何而来？他会退役吗？"
+        },
+        {
+          "images": [
+            "http://pic4.zhimg.com/4ced184e0a84464d93dd62f207228abb.jpg"
+          ],
+          "type": 0,
+          "id": 8961167,
+          "ga_prefix": "111014",
+          "title": "二手车挑来挑去，各家交易平台上价格怎么差好多"
+        },
+        {
+          "images": [
+            "http://pic3.zhimg.com/20ac6fe024d134c8234df0c134150dc6.jpg"
+          ],
+          "type": 0,
+          "id": 8965861,
+          "ga_prefix": "111013",
+          "title": "预测美国大选，有一项数据还挺准的，而且越来越明显"
+        },
+        {
+          "images": [
+            "http://pic1.zhimg.com/73de922af044dd70beae4f6d3c113d14.jpg"
+          ],
+          "type": 0,
+          "id": 8965513,
+          "ga_prefix": "111012",
+          "title": "大误 · 樱木花道，我可是在帮你啊"
+        },
+        {
+          "images": [
+            "http://pic4.zhimg.com/e76156d3f4b1932e3cf02bf7a23b8a03.jpg"
+          ],
+          "type": 0,
+          "id": 8964264,
+          "ga_prefix": "111011",
+          "title": "苹果公司是怎样培养消费者忠诚度的？"
+        },
+        {
+          "images": [
+            "http://pic1.zhimg.com/522632f1bc771bf91743af4574b6aa94.jpg"
+          ],
+          "type": 0,
+          "id": 8962937,
+          "ga_prefix": "111010",
+          "title": "「就知道你一定会投给我」：两党「亲妈州」是这么来的"
+        },
+        {
+          "images": [
+            "http://pic2.zhimg.com/b1bf21f4b6a7b4b5851279dc517a613d.jpg"
+          ],
+          "type": 0,
+          "id": 8963864,
+          "ga_prefix": "111009",
+          "title": "家庭里的「仪式感」多一点，孩子感受到的爱就多一点"
+        },
+        {
+          "title": "打开上帝视角，重新发现一座城市",
+          "ga_prefix": "111008",
+          "images": [
+            "http://pic3.zhimg.com/c959c6353d0adb61c053757a8b1d8052.jpg"
+          ],
+          "multipic": true,
+          "type": 0,
+          "id": 8963763
+        },
+        {
+          "images": [
+            "http://pic1.zhimg.com/47ac4b0e2cfe37cf1b40c8d16a60f9c8.jpg"
+          ],
+          "type": 0,
+          "id": 8964773,
+          "ga_prefix": "111007",
+          "title": "特朗普「逆袭」取胜，为什么所有预测机构都出错了？"
+        },
+        {
+          "images": [
+            "http://pic3.zhimg.com/7c187dbb9c060748e162d234280168d2.jpg"
+          ],
+          "type": 0,
+          "id": 8958248,
+          "ga_prefix": "111007",
+          "title": "说真的，看电影还有个好处是，可以止痛"
+        },
+        {
+          "images": [
+            "http://pic3.zhimg.com/9c3c775781a74373023f55bca724cee2.jpg"
+          ],
+          "type": 0,
+          "id": 8964898,
+          "ga_prefix": "111007",
+          "title": "年轻人独自一人居住，如何有效地保持自律？"
+        },
+        {
+          "images": [
+            "http://pic4.zhimg.com/d1b96f8e289674d972f57c14a422a4db.jpg"
+          ],
+          "type": 0,
+          "id": 8964643,
+          "ga_prefix": "111007",
+          "title": "读读日报 24 小时热门 TOP 5 · 特朗普总统的第一个任期"
+        },
+        {
+          "images": [
+            "http://pic2.zhimg.com/80473eae77df078154818643ec3b7bdd.jpg"
+          ],
+          "type": 0,
+          "id": 8961174,
+          "ga_prefix": "111006",
+          "title": "瞎扯 · 如何正确地吐槽"
+        }
+      ],
+      "top_stories": [
+        {
+          "image": "http://pic4.zhimg.com/3d10e453c1e7012c24709ccdbb5765fb.jpg",
+          "type": 0,
+          "id": 8966833,
+          "ga_prefix": "111017",
+          "title": "知乎好问题 · 时间管理最常见的误区有哪些？"
+        },
+        {
+          "image": "http://pic1.zhimg.com/90bd2acf132b929d70a5f508820c1d68.jpg",
+          "type": 0,
+          "id": 8964409,
+          "ga_prefix": "111015",
+          "title": "宁泽涛和国家游泳队的冲突从何而来？他会退役吗？"
+        },
+        {
+          "image": "http://pic4.zhimg.com/2d73a59c90458a0a118ca35a4778784b.jpg",
+          "type": 0,
+          "id": 8965861,
+          "ga_prefix": "111013",
+          "title": "预测美国大选，有一项数据还挺准的，而且越来越明显"
+        },
+        {
+          "image": "http://pic1.zhimg.com/c3daf9ae0f8914030203881a6d8deb98.jpg",
+          "type": 0,
+          "id": 8962937,
+          "ga_prefix": "111010",
+          "title": "「就知道你一定会投给我」：两党「亲妈州」是这么来的"
+        },
+        {
+          "image": "http://pic3.zhimg.com/7766a061e3374ca2f498f6ed589e105e.jpg",
+          "type": 0,
+          "id": 8942755,
+          "ga_prefix": "110306",
+          "title": "这里是广告 · 斜杠青年的进阶，是斜杠中年还是高级玩家？"
+        }
+      ], //列表数据
+    themeId: 0,//当前主题id
     icon:'../../images/hotest.png',
     icon_count:[
             {
@@ -74,25 +247,7 @@ Page({
       url: '../logs/logs'
     })
   },
-  //获取设备信息，屏幕的高度宽度
   onLoad: function () {
-    var _this = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        _this.setData({
-          screenHeight: res.windowHeight,
-          screenWidth: res.windowWidth,
-          slideHeight: res.windowHeight,
-          slideRight: res.windowWidth,
-          slideWidth: res.windowWidth * 0.7
-        });
-      }
-    });
-
-    var app = getApp();
-    app.getUserInfo(function (data) {
-      _this.setData({ avatarUrl: data.avatarUrl, nickName: data.nickName });
-    });
   },
 
   //从详细页面返回时会刷新
@@ -113,23 +268,6 @@ Page({
 
     var _this = this;
     _this.setData({ loading: true });
-    requests.getNewsLatest((data) => {
-      data = utils.correctData(data);
-      console.log(data);
-      //console.log( data.stories );
-      _this.setData({
-        sliderData: data.top_stories,
-        pageData: data.stories
-      });
-      _this.setData({ pageShow: 'block' });
-    }, null, () => {
-      _this.setData({ loading: false });
-    });
-
-    //获取主题日报列表
-    requests.getTheme((data) => {
-      _this.setData({ themeData: data.others });
-    });
   },
 
   //列表加载更多
@@ -162,41 +300,13 @@ Page({
     });
   },
 
-  //浮动球移动事件
-  ballMoveEvent: function (e) {
-    var touchs = e.touches[0];
-    var pageX = touchs.pageX;
-    var pageY = touchs.pageY;
-    if (pageX < 25) return;
-    if (pageX > this.data.screenWidth - 25) return;
-    if (this.data.screenHeight - pageY <= 25) return;
-    if (pageY <= 25) return;
-    var x = this.data.screenWidth - pageX - 25;
-    var y = this.data.screenHeight - pageY - 25;
-    this.setData({
-      ballBottom: y,
-      ballRight: x
-    });
-  },
-
   toDetailPage: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../detail/detail?id=' + id
     });
   },
-  toSettingPage: function () {
-    wx.navigateTo({
-      url: '../setting/setting'
-    });
-  },
-  //toCollectPage: function() {
-  //  wx.redirectTo( {
-  //    url: '../collect/collect'
-  //  });
-  //},
-
-  toHomePage: function (e) {
+   toHomePage: function (e) {
     var _this = this;
     _this.setData({ loading: true, themeId: 0 });
     console.log('themeId', _this.data.themeId);
@@ -267,16 +377,6 @@ Page({
   //  });
   //},
 
-  //浮动球点击 侧栏展开
-  ballClickEvent: function () {
-    slideUp.call(this);
-  },
-
-  //遮罩点击  侧栏关闭
-  slideCloseEvent: function () {
-    slideDown.call(this);
-  },
-
   authorShowEvent: function () {
     this.setData({ modalMsgHidden: false });
   },
@@ -289,31 +389,6 @@ Page({
     console.log(1);
   }
 });
-
-//侧栏展开
-function slideUp() {
-  var animation = wx.createAnimation({
-    duration: 600
-  });
-  this.setData({ maskDisplay: 'block' });
-  animation.translateX('100%').step();
-  this.setData({
-    slideAnimation: animation.export()
-  });
-}
-
-//侧栏关闭
-function slideDown() {
-  var animation = wx.createAnimation({
-    duration: 800
-  });
-  animation.translateX('-100%').step();
-  this.setData({
-    slideAnimation: animation.export()
-  });
-  this.setData({ maskDisplay: 'none' });
-}
-
 
 /**
  * 旋转上拉加载图标

@@ -23,5 +23,5 @@
   /* width:150rpx;
   height: 60rpx; */
   margin:0 auto;
-  font-size:20x;
+  font-size:20rpx;
 }
