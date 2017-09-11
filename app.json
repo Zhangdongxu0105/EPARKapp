@@ -9,6 +9,7 @@
     "pages/userinfo/userinfo",
     "pages/label/label",
     "pages/labelinfo/labelinfo",
+    "pages/newsinfo/newsinfo",
     "pages/news/news"
   ],
   "window": {
@@ -36,7 +37,7 @@
         "selectedIconPath": "images/u12-on.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/news/news",
         "text": "资讯",
         "iconPath": "images/u14.png",
         "selectedIconPath": "images/u14-on.png"

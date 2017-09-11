@@ -303,7 +303,7 @@ Page({
   toDetailPage: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../detail/detail?id=' + id
+      url: '../newsinfo/newsinfo?id=' + id
     });
   },
    toHomePage: function (e) {

@@ -1,2 +1,20 @@
 <!--pages/news/news.wxml-->
-<text>pages/news/news.wxml</text>
+<scroll-view wx:if="{{themeId==0}}" scroll-y="true" style="height:100%;width:100%;display:{{pageShow}}" bindscrolltolower="loadingMoreEvent">
+  <view class="common-list">
+    <block wx:key="id" wx:for="{{pageData}}">
+      <view class="list-item {{item.images[0] ? 'has-img': ''}}" wx:if="{{item.type != 3}}" data-id="{{item.id}}" bindtap="toDetailPage">
+        <view class="content">
+          <text>{{item.title}}</text>
+        </view>
+        <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" class="cover"></image>
+      </view>
+      <view class="list-spliter" wx:else>
+        <text>{{item.title}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="refresh-block" wx:if="{{loadingMore}}">
+    <image animation="{{refreshAnimation}}" src="../../images/refresh.png"></image>
+  </view>
+</scroll-view>
