@@ -52,8 +52,8 @@ swiper-item image {
   width:710rpx;
   display:flex;
   flex-direction: row;
-  border-bottom:1px solid #ccc;
-  border-top: 1px solid #ccc;
+  /* border-bottom:1px solid #ccc;
+  border-top: 1px solid #ccc; */
   padding:10rpx;
   flex-flow:wrap;
 }
@@ -112,14 +112,35 @@ swiper-item image {
 /*公用title end*/
 /*热门活动begin  */
 .remenhuodong{
-   width:500rpx;
-  padding:70rpx;  
+  height:340rpx;
+  width:100%;
+  display: flex;
 }
-/*热门活动end  */
+.remenhuodong_item{
+  height: 300rpx;
+  width: 550rpx;
+  
+} 
 .remenhuodong-image{
-  padding:20rpx; 
-  width: 650rpx;
+  height: 340rpx;
+  width: 450rpx;
+  border:  20rpx solid #fff;
 }
+.remenhuodong-lableimg{
+  position: relative;
+  left: 0rpx;
+  top: -360rpx;
+  height:60rpx;
+  width: 150rpx;
+}
+.remenhuodong-tatle{
+  position: relative;
+  left: 25rpx;
+  top: -420rpx;
+  font-size: 24rpx;
+}
+
+/*热门活动end  */
 
 /*common list*/
 .common-list .list-item {
@@ -199,4 +220,18 @@ swiper-item image {
   left: 120rpx;
   top: 200rpx;
   font-size: 30rpx;
+}.container{
+  height: 700rpx;
+}
+
+.scroll-view_H{
+    white-space: nowrap;
+}
+.scroll-view-item{
+    height: 200px;
+}
+.scroll-view-item_H{
+    display: inline-block;
+    width: 100%;
+    height: 200px;
 }

@@ -2,6 +2,7 @@
 <scroll-view wx:if="{{themeId==0}}" scroll-y="true" style="height:100%;width:100%;display:{{pageShow}}" bindscrolltolower="loadingMoreEvent">
    <view class="common-list">
     <block wx:key="id" wx:for="{{pageData}}">
+    <view class="common-list1">
       <view class="list-item {{item.images[0] ? 'has-img': ''}}" wx:if="{{item.type != 3}}" data-id="{{item.id}}" bindtap="toDetailPage">
         <view class="content">
         <!--标题  -->
@@ -13,8 +14,24 @@
           <!-- <view>
             <text class='outline_text'>{{item.outline}}</text>
           </view> -->
+        </view>
+        <!--图片  -->
+        <view class="container_cover1" wx:if="{{item.images.length==1}}">
+          <image  class="cover1" wx:for="{{item.images}}" wx:key='' src="{{item}}" ></image>
+        </view>
+        <view class="container_cover2" wx:elif="{{item.images.length==2}}">
+          <image  class="cover2" wx:for="{{item.images}}" wx:key='' src="{{item}}" ></image>
+        </view>
+        <view class="container" wx:else>
+          <image  class="cover" wx:for="{{item.images}}" wx:key='' src="{{item}}" ></image>
+        </view>
 
-          <!--点击数量  -->
+        <view  class="container1">
+        <!--标签  -->
+          <view  class='label_text'>
+              <text>{{item.label}}</text>
+          </view>
+        <!--点击数量  -->
           <view wx:if="{{item.clicksum}}" class='ckick_text'>
             <text>{{item.clicksum}}点击</text>
           </view>
@@ -22,21 +39,17 @@
             <text>0点击</text>
           </view>
 
-          <!--时间  -->
+        <!--时间  -->
           <view  class='date_text'>
             <text>{{item.date}}</text>
           </view>
-        </view>
-        <!--图片  -->
-        <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" class="cover"></image>
-        <!--标签  -->
-        <view  class='label_text'>
-            <text>{{item.label}}</text>
-        </view>
+          </view>
       </view>
       <!-- <view class="list-spliter" wx:else>
         <text>{{item.title}}</text>
       </view> -->
+      </view>
     </block>
+    
   </view> 
 </scroll-view>

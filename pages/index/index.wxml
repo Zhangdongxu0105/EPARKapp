@@ -20,19 +20,20 @@
   </block>
 </view>
 
-<view>
 热门活动
-</view>
-<view class="container">
-    <swiper  indicator-dots="{{false}}" autoplay="{{false}}" interval="{{interval}}" duration="{{duration}}"
-    circular="{{true}}">
-        <block wx:for="{{imgUrls}}" wx:key=''>
-            <swiper-item >
-                <image src="{{item}}" class="remenhuodong-image"/>
-            </swiper-item>
-        </block>
-    </swiper>
-</view>
+<scroll-view scroll-x="true"> 
+  <view class="remenhuodong" scroll-x="true"> 
+    <block wx:for="{{activityData}}" wx:key=''>
+      <view class="remenhuodong_item" > 
+            <image class="remenhuodong-image" src="{{item.image}}"></image>
+            <image class="remenhuodong-lableimg" src="{{item.lableimg}}"></image>
+            <text  class="remenhuodong-tatle" >{{item.tatle}}</text>
+      </view> 
+    </block>
+  </view> 
+</scroll-view> 
+
+
 E园资讯
 <!-- <view class="main-list-header">
     <view class="title"><text>今日热文</text></view>

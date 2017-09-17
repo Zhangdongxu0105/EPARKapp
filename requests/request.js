@@ -45,16 +45,22 @@ function getNewsLatest( successCallback, errorCallback, completeCallback ) {
   "stories": [
     {
       "images": [
+        "http://pic2.zhimg.com/e97b08d1177ebc57bd9e9d8ddf17e055.jpg",
+        "http://pic2.zhimg.com/e97b08d1177ebc57bd9e9d8ddf17e055.jpg",
         "http://pic2.zhimg.com/e97b08d1177ebc57bd9e9d8ddf17e055.jpg"
       ],
       "type": 0,
       "id": 8966833,
       "ga_prefix": "111017",
-      "title": "知乎好问题 · 时间管理最常见的误区有哪些？"
+      "title": "知乎好问题 · 时间管理最常见的误区有哪些？",
+      "date": '1小时前',
+      "clicksum": '9999',
+      "label": "E园早报"
     },
     {
       "images": [
-        "http://pic3.zhimg.com/fc30413e70df02ecbcc13fed7b35c32e.jpg"
+        "http://pic3.zhimg.com/fc30413e70df02ecbcc13fed7b35c32e.jpg",
+        "http://pic2.zhimg.com/e97b08d1177ebc57bd9e9d8ddf17e055.jpg"
       ],
       "type": 0,
       "id": 8964409,

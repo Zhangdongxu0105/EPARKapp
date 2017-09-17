@@ -10,6 +10,28 @@ Page({
       'http://www.epark.com/group1/M00/00/00/Co1WLViBs6OAbnSBAAN9-C5dJUc591.jpg',
       'http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG',
     ],
+    activityData:[
+      {
+        "image":"http://www.epark.com/group1/M00/00/00/Co1WLViAf5CAe-dBAADWcRaRl4U489.jpg",
+        "tatle":"爱心早餐",
+        "lableimg":"../../images/icon21.png"
+      },
+      {
+        "image": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
+        "tatle": "徒步30千米",
+        "lableimg": "../../images/icon21.png"
+      },
+      {
+        "image": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
+        "tatle": "免费早餐",
+        "lableimg": "../../images/icon21.png"
+      },
+      {
+        "image": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
+        "tatle": "免费早餐",
+        "lableimg": "../../images/icon21.png"
+      }
+    ],
     pageData:
     [
         {

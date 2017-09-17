@@ -1,24 +1,9 @@
 /* pages/news/news.wxss */
-/*common list*/
-.common-list .list-item {
-  position: relative;
-  border-bottom: 1px solid #EEE;
-  padding: 20rpx;
-  min-height: 300rpx;
-  overflow: hidden;
-}
-.common-list .list-item:active {
- 	background: #FAFAFA;
-}
-.common-list .list-item.has-img image.cover {
-  position: absolute;
-  left: 20rpx;
-  top: 110rpx;
-  width:300rpx;
-  height: 250rpx;
-}
-.common-list .list-item.has-img .content {
-  margin-left: 20rpx;
+.common-list1{
+padding-top:10rpx;
+padding-bottom: 10rpx;
+border-top:1px solid #ccc;
+border-bottom:1px solid #ccc;
 }
 .title_text {
   font-size: 30rpx;
@@ -32,49 +17,72 @@
    font-weight:bold;
   
 }
-
-.common-list .list-spliter {
-  font-size: 30rpx;
-  background: #EEE;
-  padding: 20rpx;
-  color: #555
-}
-
-.outline_text{
-  position: absolute;
-  left: 350rpx;
-  top: 95rpx;
-  font-size: 30rpx;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  white-space: normal !important;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  color: #808080;
-  
-}
-/*common list end  */
-.ckick_text{
+ .ckick_text{
   font-size: 24rpx;
-  position: absolute;
-  left: 350rpx;
-  top: 210rpx;
-  /* width: 150rpx;
-  height: 150rpx; */
+  padding:10rpx;
 }
 .date_text{
   font-size: 24rpx;
-  position: absolute;
-  left: 550rpx;
-  top: 210rpx;
-  /* width: 150rpx;
-  height: 150rpx; */
+  padding:10rpx;
 }
 .label_text{
-  position: absolute;
-  left: 120rpx;
-  top: 200rpx;
   font-size: 30rpx;
+  padding:10rpx;
+} 
+.container1{
+  height:50rpx;
+  width:100%;
+  display:flex;
+  padding:10rpx;
+  flex-flow:wrap;
+} 
+
+.container{
+  height:170rpx;
+  width:100%;
+  display:flex;
+  padding:10rpx;
+  flex-flow:wrap;
+}
+.cover{
+  height:150rpx;
+  width:223.5rpx;
+  padding:10rpx; 
+  display:flex;
+  flex-direction: row;
+  flex-flow:wrap;
+}
+
+.container_cover1{
+  height:320rpx;
+  width:100%;
+  display:flex;
+  padding:10rpx;
+  flex-flow:wrap;
+
+}
+.cover1{
+  height:310rpx;
+  width:710rpx;
+  padding:10rpx; 
+  display:flex;
+  flex-direction: row;
+  flex-flow:wrap;
+}
+ 
+.container_cover2{
+  height:220rpx;
+  width:100%;
+  display:flex;
+  padding:10rpx;
+  flex-flow:wrap;
+
+}
+.cover2{
+  height:210rpx;
+  width:345rpx;
+  padding:10rpx; 
+  display:flex;
+  flex-direction: row;
+  flex-flow:wrap;
 }
