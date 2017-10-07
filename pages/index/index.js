@@ -290,6 +290,13 @@ Page({
 
     var _this = this;
     _this.setData({ loading: true });
+    wx.request({
+      url: 'https://www.mengweibo.com/epark/wx/test',
+      method:'GET',
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
   },
 
   //列表加载更多
