@@ -3,9 +3,10 @@
 padding-top:10rpx;
 padding-bottom: 10rpx;
 border-top:1px solid #ccc;
-border-bottom:1px solid #ccc;
+/* border-bottom:1px solid #ccc; */
 }
 .title_text {
+  padding-left:20rpx;
   font-size: 30rpx;
   display: -webkit-box;
   overflow: hidden;
