@@ -1,4 +1,4 @@
-const API_BASE = 'https://news-at.zhihu.com/api';
+const API_BASE = 'https://www.mengweibo.com';
 const API_V4 = API_BASE + '/4';
 const API_V3 = API_BASE + '/3';
 
@@ -12,6 +12,23 @@ const API_STORY = API_V4 + '/story';
 function getLatestNews() {
     return API_NEWS + '/latest';
 }
+
+/**
+ * 获取openid_url
+ * @returns {string}
+ */
+function postOpenId() {
+  return API_BASE + '/epark/wx/openid';
+}
+
+/**
+ * 发送支付
+ * @returns {string}
+ */
+function postPay() {
+  return API_BASE + '/epark/epark/order';
+}
+
 
 /**
  * 获取日报详情
@@ -93,5 +110,7 @@ module.exports = {
     getThemeStories: getThemeStories,
     getStoryShortComments: getStoryShortComments,
     getStoryLongComments: getStoryLongComments,
-    getSplashCover: getSplashCover
+    getSplashCover: getSplashCover,
+    postOpenId: postOpenId,
+    postPay: postPay
 };

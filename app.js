@@ -1,7 +1,9 @@
+var api = require('requests/api.js');
+
 //app.js
 App({
   onLaunch: function () {
-    console.log('App Launch')
+    // console.log('App Launch')
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -30,22 +32,23 @@ App({
   },
   getUserOpenId: function (callback) {
     var self = this
-    var host = "14592619.qcloud.la"
-    var openIdUrl ='https://14592619.qcloud.la/openid'
+    var openIdUrl = api.postOpenId()
     if (self.globalData.openid) {
       callback(null, self.globalData.openid)
     } else {
       wx.login({
         success: function (data) {
-          console.log(data.code)
+          // console.log(data.code)
           wx.request({
             url: openIdUrl,
+            
             data: {
               code: data.code
             },
             success: function (res) {
-              console.log('拉取openid成功', res)
-              console.log(res.data.openid)
+              // console.log('url', openIdUrl)
+              // console.log('拉取openid成功', res)
+              console.log('openid:',res.data.openid)
               self.globalData.openid = res.data.openid
               callback(null, self.globalData.openid)
             },

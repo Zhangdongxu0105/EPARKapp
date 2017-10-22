@@ -1,4 +1,5 @@
 // ecar.js
+var api = require('../../requests/api.js');
 var app = getApp()
 Page({
 
@@ -23,8 +24,9 @@ Page({
                   500:450,
                   1000:900},
     money:0,
-    paymoney:false,
-    result:false
+    paymoney:'请选择充值金额',
+    tel:false,
+    result:true
   },
 
   /**
@@ -103,7 +105,9 @@ Page({
     } else 
     {
       this.setData({
-        result: false
+        result: false,
+        tel: e.detail.value
+
       })
     }
   },
@@ -134,45 +138,60 @@ Page({
     }
     
   },
-  requestPayment: function () {
+  requestPayment: function (e) {
     var self = this
-    var host = "14592619.qcloud.la"
-    self.setData({
-      loading: true
-    })
+    var postPay = api.postPay()
+    if (self.data.tel == '' || self.data.paymoney == '请选择充值金额'){
+      wx.showToast({
+        title: '填写信息有误，请重新填写！',
+        icon: 'success',
+        duration: 2000
+      })
+    }else {
     
-    // 此处需要先调用wx.login方法获取code，然后在服务端调用微信接口使用code换取下单用户的openId
-    // 具体文档参考https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html?t=20161230#wxloginobject
-    app.getUserOpenId(function (err, openid) {
-      if (!err) {
-        wx.request({
-          url: "https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code",
-          data: {
-            openid
-          },
-          method: 'POST',
-          success: function (res) {
-            console.log('unified order success, response is:', res)
-            var payargs = res.data.payargs
-            wx.requestPayment({
-              timeStamp: payargs.timeStamp,
-              nonceStr: payargs.nonceStr,
-              package: payargs.package,
-              signType: payargs.signType,
-              paySign: payargs.paySign
-            })
-
-            self.setData({
-              loading: false
-            })
-          }
-        })
-      } else {
-        console.log('err:', err)
-        self.setData({
-          loading: false
-        })
-      }
-    })
+      // 此处需要先调用wx.login方法获取code，然后在服务端调用微信接口使用code换取下单用户的openId
+      // 具体文档参考https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html?t=20161230#wxloginobject
+      app.getUserOpenId(function (err, openid) {
+        if (!err) {
+          wx.request({
+            url: postPay,
+            data: {
+              tel: self.data.tel,
+              // pay: self.data.paymoney
+              pay:0.01
+            },
+            method: 'POST',
+            success: function (res) {
+              if (res.data.message != 'ok'){
+                wx.showToast({
+                  title: res.data.message,
+                  icon: 'success',
+                  duration: 2000
+                })
+              }else {
+              var payargs = res.data.payargs
+              console.log('pay url:', postPay)
+              console.log('response is:', res.data)
+              wx.requestPayment({
+                timeStamp: payargs.timeStamp,
+                nonceStr: payargs.nonceStr,
+                package: payargs.package,
+                signType: payargs.signType,
+                paySign: payargs.paySign
+              })
+              self.setData({
+                loading: false
+              })
+              }
+            }
+          })
+        } else {
+          console.log('err:', err)
+          self.setData({
+            loading: true
+          })
+        }
+      })
+    }
   }
 })

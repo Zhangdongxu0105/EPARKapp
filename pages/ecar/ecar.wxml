@@ -19,12 +19,12 @@
             </view>
             <view class="containera-list">
               <text class="phonetext">手机号</text>
-              <input class="phone" name="phone" placeholder="请输入手机号" bindblur="checkphone" type="number" maxlength="11"/>
+              <input class="phone" name="phone" placeholder-style="color: #B2B2B2" placeholder="请输入手机号" bindblur="checkphone" type="number" maxlength="11"/>
             </view>
             <view class="containera-list">
               <text class="phonetext">充值金额</text> 
-              <input class="phone" name="money" wx:if="{{paymoney}}" value="{{paymoney}}" bindblur="checkmoney" type="number"  maxlength="4"/>
-              <input class="phone" name="money" wx:else placeholder="请输入充值金额" bindblur="checkmoney" type="number"  maxlength="4" />
+              <text class="phone" name="money" wx:if="{{paymoney!='请选择充值金额'}}" bindblur="checkmoney" type="number"  maxlength="4">{{paymoney}}</text>
+              <text class="phone" name="money" wx:else placeholder="请选择充值金额" style="color: #B2B2B2" bindblur="checkmoney" type="number"  maxlength="4" >{{paymoney}}</text>
             </view>
         </view>
         <view class="containera-pay"  >
@@ -39,13 +39,13 @@
           <text wx:if="{{result}}" >{{result}}</text>
         </view> -->
         <view class="btn-area">
-            <button class="paybutton" formType="submit">微信支付</button>
+            <button type="primary" bindtap="requestPayment" loading="{{loading}}">微信支付</button>
         </view>
     </form>
 </view>
 <!--顶部轮播图 end-->
 
-<view class="page-body">
+<!-- <view class="page-body">
     <view class="page-section">
       <view>支付金额</view>
       <view class="price">0.01</view>
@@ -53,5 +53,5 @@
       <view class="btn-area">
         <button type="primary" bindtap="requestPayment" loading="{{loading}}">支付</button>
       </view>
-    </view>
-  </view>
+    </view> -->
+  <!-- </view> -->

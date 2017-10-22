@@ -276,7 +276,7 @@ Page({
   onShow: function () {
     if (this.data.themeId == -1) {
       var pageData = wx.getStorageSync('pageData') || []
-      console.log(pageData);
+      // console.log(pageData);
       this.setData({
         pageData: pageData
       })
@@ -294,7 +294,7 @@ Page({
       url: 'https://www.mengweibo.com/epark/wx/test',
       method:'GET',
       success: function (res) {
-        console.log(res.data)
+        // console.log(res.data)
       }
     })
   },

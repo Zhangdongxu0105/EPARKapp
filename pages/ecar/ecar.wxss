@@ -59,6 +59,7 @@ height:50rpx;
 width:300rpx;
  flex-direction: row;
  flex-flow:wrap;
+ /* color: #B2B2B2; */
 }
 
 .containera-pay{
