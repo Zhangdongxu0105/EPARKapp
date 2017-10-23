@@ -38,16 +38,15 @@ App({
     } else {
       wx.login({
         success: function (data) {
-          // console.log(data.code)
+          console.log(data.code)
           wx.request({
             url: openIdUrl,
-            
             data: {
               code: data.code
             },
             success: function (res) {
-              // console.log('url', openIdUrl)
-              // console.log('拉取openid成功', res)
+              console.log('url', openIdUrl)
+              console.log('拉取openid成功', res)
               console.log('openid:',res.data.openid)
               self.globalData.openid = res.data.openid
               callback(null, self.globalData.openid)

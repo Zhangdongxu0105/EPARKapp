@@ -157,19 +157,24 @@ Page({
             url: postPay,
             data: {
               tel: self.data.tel,
-              // pay: self.data.paymoney
+              // pay: self.data.money_array[self.data.paymoney]
               pay:0.01
             },
             method: 'POST',
+            dataType:'json',
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
             success: function (res) {
-              if (res.data.message != 'ok'){
+              console.log(res.data)
+              if (res.data.message != '成功'){
                 wx.showToast({
                   title: res.data.message,
                   icon: 'success',
                   duration: 2000
                 })
               }else {
-              var payargs = res.data.payargs
+                var payargs = res.data.result.payParam
               console.log('pay url:', postPay)
               console.log('response is:', res.data)
               wx.requestPayment({
@@ -182,6 +187,9 @@ Page({
               self.setData({
                 loading: false
               })
+              wx.navigateTo({
+                url: '../ecar/ecar'
+              });
               }
             }
           })
