@@ -14,22 +14,22 @@ Page({
       {
         "image":"http://www.epark.com/group1/M00/00/00/Co1WLViAf5CAe-dBAADWcRaRl4U489.jpg",
         "tatle":"爱心早餐",
-        "lableimg":"../../images/icon21.png"
+        "lableimg":"../../images/icon021.png"
       },
       {
         "image": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
         "tatle": "徒步30千米",
-        "lableimg": "../../images/icon21.png"
+        "lableimg": "../../images/icon021.png"
       },
       {
         "image": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
         "tatle": "免费早餐",
-        "lableimg": "../../images/icon21.png"
+        "lableimg": "../../images/icon021.png"
       },
       {
         "image": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
         "tatle": "免费早餐",
-        "lableimg": "../../images/icon21.png"
+        "lableimg": "../../images/icon021.png"
       }
     ],
     pageData:
@@ -217,30 +217,28 @@ Page({
             },
             {
               url: '../../images/icon012.png',
-                text: '活动场所'
-            },
-            // {
-            //   url: '../../images/icon008.png',
-            //     text: '自如客'
-            // },
+                text: '娱乐'
+            }, 
             {
-              url: '../../images/icon004.png',
-                text: '一卡管理',
-                navigator_url:'../ecar/ecar'
+              url: '../../images/icon009.png',
+              text: '吐槽',
+              navigator_url: '../tucao/tucao'
             },
             {
               url: '../../images/icon003.png',
-                text: '云打印'
+              text: '云打印'
             },
+            {
+              url: '../../images/icon004.png',
+                text: 'E卡',
+                navigator_url:'../ecar/ecar'
+            },
+            
             // {
             //   url: '../../images/icon010.png',
             //     text: '汗蒸'
             // },
-            {
-              url: '../../images/icon009.png',
-                text: '吐槽',
-                navigator_url: '../tucao/tucao'
-            }
+            
             
         ],
     indicatorDots: true,

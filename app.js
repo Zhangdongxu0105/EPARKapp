@@ -2,6 +2,7 @@ var api = require('requests/api.js');
 
 //app.js
 App({
+  systemInfo :null,
   onLaunch: function () {
     // console.log('App Launch')
     //调用API从本地缓存中获取数据
@@ -29,6 +30,17 @@ App({
         }
       })
     }
+  },
+  getSystemInfo: function () {
+    var that = this
+    if (!that.systemInfo){
+      wx.getSystemInfo({
+        success: function (res) {
+          that.systemInfo = res
+        }
+      })
+    }
+    return that.systemInfo
   },
   getUserOpenId: function (callback) {
     var self = this

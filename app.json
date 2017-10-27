@@ -37,6 +37,12 @@
         "selectedIconPath": "images/u12-on.png"
       },
       {
+        "pagePath": "pages/logs/logs",
+        "text": "社区",
+        "iconPath": "images/u15.png",
+        "selectedIconPath": "images/u15-on.png"
+      },
+      {
         "pagePath": "pages/news/news",
         "text": "资讯",
         "iconPath": "images/u14.png",

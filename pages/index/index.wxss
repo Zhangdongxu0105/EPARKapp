@@ -54,25 +54,28 @@ swiper-item image {
   flex-direction: row;
   /* border-bottom:1px solid #ccc;
   border-top: 1px solid #ccc; */
-  padding:10rpx;
+  /* padding:10rpx; */
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
   flex-flow:wrap;
 }
 .icon_size{
-  width:90rpx;
-  height: 90rpx;
+  width:85rpx;
+  height: 85rpx;
+  padding-top: 10rpx;
   padding-bottom: 50rpx;
   padding-left: 55rpx;
-  padding-right: 30rpx;
+  /* padding-right: 10rpx; */
   display:flex;
   flex-direction: row;
   flex-flow:wrap;
 }
 .text{
-    width:95rpx;
-    height: 50rpx;
+    width:70rpx;
+    height: 70rpx;
     color:#000;
     /* display:flex; */
-    padding-top: 20rpx;
+    padding-top: 10rpx;
     flex-direction: column;
     text-align: center;
 

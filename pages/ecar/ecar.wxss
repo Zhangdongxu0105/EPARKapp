@@ -161,3 +161,10 @@ width:300rpx;
   top: 8rpx;
   left: -40rpx;
 }
+.moneyimage{
+  width:60rpx;
+  height:60rpx;
+  display:flex; 
+  flex-direction: row; 
+  flex-flow:wrap;
+}

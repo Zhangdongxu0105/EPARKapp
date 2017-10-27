@@ -4,6 +4,7 @@
    flex-direction: column; 
   padding: 20rpx;
   align-items: center;
+  /* background: #EAEAEA; */
   /* background: #f9f027; */
 }
 .userinfo-avatar {
@@ -38,7 +39,7 @@
   display: inline-block;
 }
 .weui_cell_bd_p{
-  font-size: 14px;
+  font-size: 16px;
   /* color: #939393; */
 }
 .badge{
@@ -63,4 +64,20 @@
   /* background-image: url(../../images/u70.png); */
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+ .space{
+border-bottom: 1px solid #dadada;
+background: #EAEAEA;
+} 
+/* .info_list{
+  background: #B0B0B0;
+} */
+.container{
+  /* height: 1100rpx; */
+  background: #EAEAEA;
+  padding-left: 0rpx;
+  padding-right: 0rpx;
+}
+.info_list{
+  background: #FFFFFF;
 }

@@ -1,6 +1,7 @@
 var app = getApp()
 Page({
   data: {
+    windowHeight : null,
     userInfo: {
       avatarUrl: '../../images/icon013.png',
       nickName:'游客'
@@ -11,7 +12,8 @@ Page({
         text: 'E卡管理',
         isunread: false,
         unreadNum: 0,
-        url:'../ecar/ecar'
+        url:'../ecar/ecar',
+        space:true
     },
      {
        icon: '../../images/icon006.png',
@@ -31,7 +33,8 @@ Page({
     }, 
     {
       icon: '../../images/icon016.png',
-        text: '客户中心'
+        text: '客户中心',
+        space: true
     }, 
     {
       icon: '../../images/icon017.png',
@@ -41,6 +44,9 @@ Page({
 
   onLoad: function () {
     var that = this
+      that.setData({
+        windowHeight: app.getSystemInfo().windowHeight
+      })
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
       //更新数据

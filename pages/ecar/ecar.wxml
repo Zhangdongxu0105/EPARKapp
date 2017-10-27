@@ -15,7 +15,8 @@
         <view class="section">
             <view class="containera-list">
               <text class="phonetext">E卡余额</text>
-              <input class="phone"  value="￥{{money}}" name="phone" placeholder="请输入手机号" bindblur="checkphone" type="number" maxlength="11"/>
+              <image src="{{images}}" class='moneyimage'/>
+              <input class="phone"  value="  {{money}}" name="phone" placeholder="请输入手机号" bindblur="checkphone" type="number" maxlength="11"/>
             </view>
             <view class="containera-list">
               <text class="phonetext">手机号</text>

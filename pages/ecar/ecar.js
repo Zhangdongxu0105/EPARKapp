@@ -26,7 +26,8 @@ Page({
     money:0,
     paymoney:'请选择充值金额',
     tel:false,
-    result:true
+    result:true,
+    images:"../../images/icon022.png"
   },
 
   /**

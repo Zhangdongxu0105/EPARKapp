@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+ <view class="container" style='height:{{windowHeight}}px' > 
   <view  bindtap="bindViewTap" class="userinfo">
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="imbin"></image>
       <text class="userinfo-nickname" bindtap="imbin">{{userInfo.nickName}}</text>
@@ -16,6 +16,9 @@
             <view class="with_arrow"></view>
         </view>
        </navigator>
+       <view wx:if="{{item.space}}" class='space'>
+            <text >\n</text>
+      </view>
     </block>
   </view>
-</view>
+ </view> 
