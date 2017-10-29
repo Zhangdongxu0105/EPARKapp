@@ -1,5 +1,6 @@
 // ecar.js
 var api = require('../../requests/api.js');
+var login = require('../../requests/login.js');
 var app = getApp()
 Page({
 
@@ -152,55 +153,109 @@ Page({
     
       // 此处需要先调用wx.login方法获取code，然后在服务端调用微信接口使用code换取下单用户的openId
       // 具体文档参考https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html?t=20161230#wxloginobject
-      app.getUserOpenId(function (err, openid) {
-        if (!err) {
+
+
+      login.login({
+        success: function (userInfo) {
+          console.log('登录成功', userInfo);
           wx.request({
             url: postPay,
             data: {
               tel: self.data.tel,
               // pay: self.data.money_array[self.data.paymoney]
-              pay:0.01
+              pay: 0.01
             },
             method: 'POST',
-            dataType:'json',
+            dataType: 'json',
             header: {
               'content-type': 'application/json' // 默认值
             },
             success: function (res) {
               console.log(res.data)
-              if (res.data.message != '成功'){
+              if (res.data.message != '成功') {
                 wx.showToast({
                   title: res.data.message,
                   icon: 'success',
                   duration: 2000
                 })
-              }else {
+              } else {
                 var payargs = res.data.result.payParam
-              console.log('pay url:', postPay)
-              console.log('response is:', res.data)
-              wx.requestPayment({
-                timeStamp: payargs.timeStamp,
-                nonceStr: payargs.nonceStr,
-                package: payargs.package,
-                signType: payargs.signType,
-                paySign: payargs.paySign
-              })
-              self.setData({
-                loading: false
-              })
-              wx.navigateTo({
-                url: '../ecar/ecar'
-              });
+                console.log('pay url:', postPay)
+                console.log('response is:', res.data)
+                wx.requestPayment({
+                  timeStamp: payargs.timeStamp,
+                  nonceStr: payargs.nonceStr,
+                  package: payargs.package,
+                  signType: payargs.signType,
+                  paySign: payargs.paySign
+                })
+                self.setData({
+                  loading: false
+                })
+                wx.navigateTo({
+                  url: '../ecar/ecar'
+                });
               }
             }
           })
-        } else {
+        },
+        fail: function (err) {
+          console.log('登录失败', err);
           console.log('err:', err)
           self.setData({
             loading: true
           })
         }
-      })
+      });
+      // app.getUserOpenId(function (err, openid) {
+      //   if (!err) {
+      //     wx.request({
+      //       url: postPay,
+      //       data: {
+      //         tel: self.data.tel,
+      //         // pay: self.data.money_array[self.data.paymoney]
+      //         pay:0.01
+      //       },
+      //       method: 'POST',
+      //       dataType:'json',
+      //       header: {
+      //         'content-type': 'application/json' // 默认值
+      //       },
+      //       success: function (res) {
+      //         console.log(res.data)
+      //         if (res.data.message != '成功'){
+      //           wx.showToast({
+      //             title: res.data.message,
+      //             icon: 'success',
+      //             duration: 2000
+      //           })
+      //         }else {
+      //           var payargs = res.data.result.payParam
+      //         console.log('pay url:', postPay)
+      //         console.log('response is:', res.data)
+      //         wx.requestPayment({
+      //           timeStamp: payargs.timeStamp,
+      //           nonceStr: payargs.nonceStr,
+      //           package: payargs.package,
+      //           signType: payargs.signType,
+      //           paySign: payargs.paySign
+      //         })
+      //         self.setData({
+      //           loading: false
+      //         })
+      //         wx.navigateTo({
+      //           url: '../ecar/ecar'
+      //         });
+      //         }
+      //       }
+      //     })
+      //   } else {
+      //     console.log('err:', err)
+      //     self.setData({
+      //       loading: true
+      //     })
+      //   }
+      // })
     }
   }
 })
