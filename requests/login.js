@@ -58,6 +58,147 @@ var defaultOptions = {
     fail: noop,
     loginUrl: api.postOpenId(),
 };
+var defaultCode =null
+
+/**
+ * @method
+ * 进行服务器登录，以获得登录会话
+ *
+ * @param {Object} options 登录配置
+ * @param {string} options.loginUrl 登录使用的 URL，服务器应该在这个 URL 上处理登录请求
+ * @param {string} [options.method] 请求使用的 HTTP 方法，默认为 "GET"
+ * @param {Function} options.success(userInfo) 登录成功后的回调函数，参数 userInfo 微信用户信息
+ * @param {Function} options.fail(error) 登录失败后的回调函数，参数 error 错误信息
+ */
+var getToken = function getToken(options) {
+  var token = Session.get();
+  if (!token) {
+    options = utils.extend({}, defaultOptions, options);
+    getWxLoginResult(function (wxLoginError, wxLoginResult) {
+      if (wxLoginError) {
+        options.fail(wxLoginError);
+        return;
+      }
+      wx.request({
+        url: options.loginUrl,
+        method: options.method,
+        data: { code: wxLoginResult.code },
+        success: function (result) {
+          var data = result.data;
+          console.log(data)
+          // 成功地响应会话信息
+          if (data.message != '成功') {
+            if (data.openid) {
+              wx.request({
+                url: api.postToken(),
+                method: "POST",
+                data: { name: "123456", openCode: data.openid, mobile: "mobile111111111111" },
+                success: function (result) {
+                  var data = result.data;
+                  // 成功地响应会话信息
+                  if (data.message != 'ok') {
+                    if (data.token) {
+                      console.log(data.token)
+                      Session.set(data.token);
+                      return data.token
+                    } else {
+                      var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
+                      var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
+                      options.fail(noSessionError);
+                    }
+
+                    // 没有正确响应会话信息
+                  } else {
+                    var errorMessage = '登录请求没有包含会话响应，请确保服务器处理 `' + options.loginUrl + '` 的时候正确使用了 SDK 输出登录结果';
+                    var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
+                    options.fail(noSessionError);
+                  }
+                },
+
+                // 响应错误
+                fail: function (loginResponseError) {
+                  var error = new LoginError(constants.ERR_LOGIN_FAILED, '登录失败，可能是网络错误或者服务器发生异常');
+                  options.fail(error);
+                },
+              });
+            } else {
+              var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
+              var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
+              options.fail(noSessionError);
+            }
+
+            // 没有正确响应会话信息
+          } else {
+            var errorMessage = '登录请求没有包含会话响应，请确保服务器处理 `' + options.loginUrl + '` 的时候正确使用了 SDK 输出登录结果';
+            var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
+            options.fail(noSessionError);
+          }
+        },
+
+        // 响应错误
+        fail: function (loginResponseError) {
+          var error = new LoginError(constants.ERR_LOGIN_FAILED, '登录失败，可能是网络错误或者服务器发生异常');
+          options.fail(error);
+        },
+      });
+    })
+    // 请求服务器登录地址，获得会话信息
+  }
+  else {
+    return token
+  }
+
+};
+
+
+
+
+
+/**
+ * @method
+ * 进行服务器登录，以获得登录会话
+ *
+ * @param {Object} options 登录配置
+ * @param {string} options.loginUrl 登录使用的 URL，服务器应该在这个 URL 上处理登录请求
+ * @param {string} [options.method] 请求使用的 HTTP 方法，默认为 "GET"
+ * @param {Function} options.success(userInfo) 登录成功后的回调函数，参数 userInfo 微信用户信息
+ * @param {Function} options.fail(error) 登录失败后的回调函数，参数 error 错误信息
+ */
+var bindToken = function bindToken(options) {
+  var token = Session.get();
+  if (!token){
+    options = utils.extend({}, defaultOptions, options);
+    getWxLoginResult(function (wxLoginError, wxLoginResult) {
+      if (wxLoginError) {
+        options.fail(wxLoginError);
+        return;
+      }
+      wx.request({
+        url: api.bindToken(),
+        method: "POST",
+        data: { name: "123456", openCode: wxLoginResult.code, mobile: "1111111"},
+        success: function (result) {
+          var data = result.data;
+          console.log(data)
+          // 成功地响应会话信息
+          if (data.message != '成功') {
+            if (data) {
+              console.log(data)
+        }}},
+        // 响应错误
+        fail: function (loginResponseError) {
+          var error = new LoginError(constants.ERR_LOGIN_FAILED, '登录失败，可能是网络错误或者服务器发生异常');
+          options.fail(error);
+        },
+      });
+    })
+    // 请求服务器登录地址，获得会话信息
+  }
+
+    };
+
+
+
 
 /**
  * @method
@@ -106,7 +247,7 @@ var login = function login(options) {
                 var data = result.data;
                 console.log(data)
                 // 成功地响应会话信息
-                if (data.message!='ok' ) {
+                if (data.message !='成功' ) {
                     if (data.session) {
                         data.session.userInfo = userInfo;
                         Session.set(data.session);
@@ -158,4 +299,5 @@ module.exports = {
     LoginError: LoginError,
     login: login,
     setLoginUrl: setLoginUrl,
+    bindToken: bindToken,
 };

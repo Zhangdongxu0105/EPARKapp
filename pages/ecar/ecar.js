@@ -154,8 +154,7 @@ Page({
       // 此处需要先调用wx.login方法获取code，然后在服务端调用微信接口使用code换取下单用户的openId
       // 具体文档参考https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html?t=20161230#wxloginobject
 
-
-      login.login({
+      login.bindToken({
         success: function (userInfo) {
           console.log('登录成功', userInfo);
           wx.request({

@@ -18,7 +18,24 @@ function getLatestNews() {
  * @returns {string}
  */
 function postOpenId() {
-  return API_BASE + '/epark/wx/openid';
+  return API_BASE + '/epark/wx/user/openid';
+}
+
+/**
+ * 获取token_url
+ * @returns {string}
+ */
+function postToken() {
+  return API_BASE + '/epark/wx/user/token';
+}
+
+
+/**
+ * 获取bindtoken_url
+ * @returns {string}
+ */
+function bindToken() {
+  return API_BASE + '/epark/wx/user/bind';
 }
 
 /**
@@ -112,5 +129,7 @@ module.exports = {
     getStoryLongComments: getStoryLongComments,
     getSplashCover: getSplashCover,
     postOpenId: postOpenId,
-    postPay: postPay
+    postPay: postPay,
+    postToken: postToken,
+    bindToken: bindToken,
 };
