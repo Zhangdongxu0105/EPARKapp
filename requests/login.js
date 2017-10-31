@@ -91,7 +91,7 @@ var getToken = function getToken(options) {
             if (data.openid) {
               wx.request({
                 url: api.postToken(),
-                method: "POST",
+                method: "GET",
                 data: { name: "123456", openCode: data.openid, mobile: "mobile111111111111" },
                 success: function (result) {
                   var data = result.data;
