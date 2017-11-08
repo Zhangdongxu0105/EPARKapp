@@ -1,34 +1,36 @@
 //index.js
 var utils = require('../../utils/util.js');
 var requests = require('../../requests/request.js');
+var api = require('../../requests/api.js');
 //获取应用实例
 var app = getApp()
 Page({
   data: {
+   
     imgUrls: [
-      'http://www.epark.com/group1/M00/00/00/Co1WLViAf5CAe-dBAADWcRaRl4U489.jpg',
-      'http://www.epark.com/group1/M00/00/00/Co1WLViBs6OAbnSBAAN9-C5dJUc591.jpg',
-      'http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG',
+      { "id": "1", "img": "http://www.epark.com/group1/M00/00/00/Co1WLViAf5CAe-dBAADWcRaRl4U489.jpg", 'linkUrl': "wwww", "activityId": "1", "typeCode": "NONE" },
+      { "id": "1", "img": 'http://www.epark.com/group1/M00/00/00/Co1WLViBs6OAbnSBAAN9-C5dJUc591.jpg', 'linkUrl': "wwww", "activityId": "1", "typeCode": "NONE" },
     ],
     activityData:[
       {
-        "image":"http://www.epark.com/group1/M00/00/00/Co1WLViAf5CAe-dBAADWcRaRl4U489.jpg",
-        "tatle":"爱心早餐",
+        "id":1,
+        "img":"http://www.epark.com/group1/M00/00/00/Co1WLViAf5CAe-dBAADWcRaRl4U489.jpg",
+        "title":"爱心早餐",
         "lableimg":"../../images/icon021.png"
       },
       {
-        "image": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
-        "tatle": "徒步30千米",
+        "img": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
+        "title": "徒步30千米",
         "lableimg": "../../images/icon021.png"
       },
       {
-        "image": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
-        "tatle": "免费早餐",
+        "img": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
+        "title": "免费早餐",
         "lableimg": "../../images/icon021.png"
       },
       {
-        "image": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
-        "tatle": "免费早餐",
+        "img": "http://www.epark.com/group1/M00/00/01/Co1WLVld_b2AHmaaAEWItBmApkU607.JPG",
+        "title": "免费早餐",
         "lableimg": "../../images/icon021.png"
       }
     ],
@@ -272,6 +274,7 @@ Page({
 
   //从详细页面返回时会刷新
   onShow: function () {
+    var that = this
     if (this.data.themeId == -1) {
       var pageData = wx.getStorageSync('pageData') || []
       // console.log(pageData);
@@ -279,6 +282,51 @@ Page({
         pageData: pageData
       })
     }
+    wx.request({
+      url: api.getBanner(),
+      data: {
+        positionCode: "HOME_PAGEl"
+      },
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+        console.log(res)
+        if (res.data.message != '成功') {
+          wx.showToast({
+            title: "首页轮播图获取失败",
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          that.setData({
+            activityData: res.data.data
+          })
+        }
+      }
+    })
+    wx.request({
+      url: api.getActivityr(),
+      data: {
+        pageNumber: 1,
+        pageSize:5
+      },
+      method: 'POST',
+      dataType: 'json',
+      success: function (res) {
+        console.log(res)
+        if (res.data.message != '成功') {
+          wx.showToast({
+            title: "获取热门活动失败",
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          that.setData({
+            imgUrls: res.data.data
+          })
+        }
+      }
+    })
   },
 
   onReady: function () {

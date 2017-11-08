@@ -14,6 +14,22 @@ function getLatestNews() {
 }
 
 /**
+ * 获取首页轮播图
+ * @returns {string}
+ */
+function getBanner() {
+  return API_BASE + '/epark/wx/banner/list';
+}
+
+/**
+ * 获取热门活动
+ * @returns {string}
+ */
+function getActivityr() {
+  return API_BASE + '/epark/wx/activity/list';
+}
+
+/**
  * 获取openid_url
  * @returns {string}
  */
@@ -132,4 +148,6 @@ module.exports = {
     postPay: postPay,
     postToken: postToken,
     bindToken: bindToken,
+    getBanner: getBanner,
+    getActivityr: getActivityr
 };

@@ -4,7 +4,9 @@
     interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
         <block wx:for="{{imgUrls}}" wx:key='' >
             <swiper-item>
-                <image src="{{item}}" class="slide-image" />
+            <navigator url="{{item.linkUrl}}" hover-class="none">
+                <image src="{{item.img}}" class="slide-image" />
+              </navigator>
             </swiper-item>
         </block>
     </swiper>
@@ -25,9 +27,9 @@
   <view class="remenhuodong" scroll-x="true"> 
     <block wx:for="{{activityData}}" wx:key=''>
       <view class="remenhuodong_item" > 
-            <image class="remenhuodong-image" src="{{item.image}}"></image>
+            <image class="remenhuodong-image" src="{{item.img}}"></image>
             <image class="remenhuodong-lableimg" src="{{item.lableimg}}"></image>
-            <text  class="remenhuodong-tatle" >{{item.tatle}}</text>
+            <text  class="remenhuodong-tatle" >{{item.title}}</text>
       </view> 
     </block>
   </view> 
