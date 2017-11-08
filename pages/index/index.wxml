@@ -28,7 +28,7 @@
     <block wx:for="{{activityData}}" wx:key=''>
       <view class="remenhuodong_item" > 
             <image class="remenhuodong-image" src="{{item.img}}"></image>
-            <image class="remenhuodong-lableimg" src="{{item.lableimg}}"></image>
+            <image class="remenhuodong-lableimg" src="../../images/icon021.png"></image>
             <text  class="remenhuodong-tatle" >{{item.title}}</text>
       </view> 
     </block>

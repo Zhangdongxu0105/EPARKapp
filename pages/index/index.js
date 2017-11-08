@@ -299,7 +299,7 @@ Page({
           })
         } else {
           that.setData({
-            activityData: res.data.data
+            imgUrls: res.data.data
           })
         }
       }
@@ -322,7 +322,7 @@ Page({
           })
         } else {
           that.setData({
-            imgUrls: res.data.data
+            activityData: res.data.data
           })
         }
       }
