@@ -10,7 +10,8 @@
     "pages/label/label",
     "pages/labelinfo/labelinfo",
     "pages/newsinfo/newsinfo",
-    "pages/news/news"
+    "pages/news/news",
+    "pages/urlhtml/urlhtml"
   ],
   "window": {
     "backgroundTextStyle": "light",

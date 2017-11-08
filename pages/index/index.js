@@ -455,6 +455,12 @@ Page({
 
   onPullDownRefreash: function (e) {
     console.log(1);
+  },
+  bindtap_url:function(e){
+    wx.navigateTo({
+      url: "../urlhtml/urlhtml?url="+e.currentTarget.dataset.url
+    })
+    
   }
 });
 

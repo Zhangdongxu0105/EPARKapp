@@ -4,9 +4,9 @@
     interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
         <block wx:for="{{imgUrls}}" wx:key='' >
             <swiper-item>
-            <navigator url="{{item.linkUrl}}" hover-class="none">
-                <image src="{{item.img}}" class="slide-image" />
-              </navigator>
+             <!-- <navigator url="../urlhtml/urlhtml" hover-class="none">  -->
+                 <image src="{{item.img}}" class="slide-image" bindtap ="bindtap_url" data-url="{{item.linkUrl}}"/>
+               <!-- </navigator>  -->
             </swiper-item>
         </block>
     </swiper>
