@@ -1,6 +1,7 @@
 // ecar.js
 var api = require('../../requests/api.js');
 var login = require('../../requests/login.js');
+var requests = require('../../requests/request.js');
 var app = getApp()
 Page({
 
@@ -35,6 +36,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    requests.request({
+      url: api.getBanner(),
+      data: {
+        positionCode: "E_CARD"
+      },
+      method: 'GET',
+      dataType: 'json',
+      success: function (res) {
+        if (res.data.message != '成功') {
+          wx.showToast({
+            title: "E卡轮播图获取失败",
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          that.setData({
+            imgUrls: res.data.data
+          })
+        }
+      }
+    })
   
   },
 
@@ -140,6 +163,14 @@ Page({
     }
     
   },
+  bindtap_url: function (e) {
+    wx.navigateTo({
+      url: "../urlhtml/urlhtml?url=" + e.currentTarget.dataset.url
+    })
+
+  },
+
+
   requestPayment: function (e) {
     var self = this
     var postPay = api.postPay()
@@ -156,7 +187,6 @@ Page({
 
       login.bindToken({
         success: function (userInfo) {
-          console.log('登录成功', userInfo);
           wx.request({
             url: postPay,
             data: {
@@ -170,7 +200,6 @@ Page({
               'content-type': 'application/json' // 默认值
             },
             success: function (res) {
-              console.log(res.data)
               if (res.data.message != '成功') {
                 wx.showToast({
                   title: res.data.message,
@@ -179,8 +208,6 @@ Page({
                 })
               } else {
                 var payargs = res.data.result.payParam
-                console.log('pay url:', postPay)
-                console.log('response is:', res.data)
                 wx.requestPayment({
                   timeStamp: payargs.timeStamp,
                   nonceStr: payargs.nonceStr,

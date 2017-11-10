@@ -232,8 +232,8 @@ var login = function login(options) {
         var iv = wxLoginResult.iv;
         var header = {};
 
-        header[constants.WX_HEADER_CODE] = code;
-        header[constants.WX_HEADER_ENCRYPTED_DATA] = encryptedData;
+        // header[constants.WX_HEADER_CODE] = code;
+        // header[constants.WX_HEADER_ENCRYPTED_DATA] = encryptedData;
         header[constants.WX_HEADER_IV] = iv;
 
         // 请求服务器登录地址，获得会话信息

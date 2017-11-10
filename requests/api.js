@@ -1,4 +1,4 @@
-const API_BASE = 'https://www.mengweibo.com';
+const API_BASE = 'https://www.mengweibo.com/epark';
 const API_V4 = API_BASE + '/4';
 const API_V3 = API_BASE + '/3';
 
@@ -18,7 +18,7 @@ function getLatestNews() {
  * @returns {string}
  */
 function getBanner() {
-  return API_BASE + '/epark/wx/banner/list';
+  return API_BASE + '/wx/banner/list';
 }
 
 /**
@@ -26,15 +26,32 @@ function getBanner() {
  * @returns {string}
  */
 function getActivityr() {
-  return API_BASE + '/epark/wx/activity/list';
+  return API_BASE + '/wx/activity/list';
 }
+
+/**
+ * 获取首页咨询
+ * @returns {string}
+ */
+function getTopInformationr() {
+  return API_BASE + '/wx/information/topInformation';
+}
+
+/**
+ * 获取咨询列表
+ * @returns {string}
+ */
+function getTopInformationList() {
+  return API_BASE + '/wx/information/list';
+}
+
 
 /**
  * 获取openid_url
  * @returns {string}
  */
 function postOpenId() {
-  return API_BASE + '/epark/wx/user/openid';
+  return API_BASE + '/wx/user/openid';
 }
 
 /**
@@ -42,7 +59,7 @@ function postOpenId() {
  * @returns {string}
  */
 function postToken() {
-  return API_BASE + '/epark/wx/user/token';
+  return API_BASE + '/wx/user/token';
 }
 
 
@@ -51,7 +68,7 @@ function postToken() {
  * @returns {string}
  */
 function bindToken() {
-  return API_BASE + '/epark/wx/user/bind';
+  return API_BASE + '/wx/user/bind';
 }
 
 /**
@@ -59,7 +76,7 @@ function bindToken() {
  * @returns {string}
  */
 function postPay() {
-  return API_BASE + '/epark/epark/order';
+  return API_BASE + '/epark/order';
 }
 
 
@@ -149,5 +166,7 @@ module.exports = {
     postToken: postToken,
     bindToken: bindToken,
     getBanner: getBanner,
-    getActivityr: getActivityr
+    getActivityr: getActivityr,
+    getTopInformationr: getTopInformationr,
+    getTopInformationList: getTopInformationList
 };

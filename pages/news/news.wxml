@@ -1,5 +1,5 @@
 <!--pages/news/news.wxml-->
-<scroll-view wx:if="{{themeId==0}}" scroll-y="true" style="height:100%;width:100%;display:{{pageShow}}" bindscrolltolower="loadingMoreEvent">
+<scroll-view wx:if="{{themeId==0}}" scroll-y="true" style="height:100%;width:100%;display:{{pageShow}}" bindscrolltoupper="refesh" bindscrolltolower="loadMore">
    <view class="common-list">
     <block wx:key="id" wx:for="{{pageData}}">
     <view class="common-list1">

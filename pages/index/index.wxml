@@ -65,14 +65,14 @@ E园资讯
 
           <!--时间  -->
           <view  class='date_text'>
-            <text>{{item.date}}</text>
+            <text>{{item.dateTime}}</text>
           </view>
         </view>
         <!--图片  -->
-        <image wx:if="{{item.images[0]}}" src="{{item.images[0]}}" class="cover"></image>
+        <image wx:if="{{item.img[0]}}" src="{{item.img[0]}}" class="cover"></image>
         <!--标签  -->
         <view  class='label_text'>
-            <text>{{item.label}}</text>
+            <text>{{item.typeName}}</text>
         </view>
       </view>
       <!-- <view class="list-spliter" wx:else>

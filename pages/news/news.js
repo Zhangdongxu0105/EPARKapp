@@ -1,7 +1,7 @@
 // pages/news/news.js
 var utils = require('../../utils/util.js');
 var requests = require('../../requests/request.js');
-
+var api = require('../../requests/api.js');
 var weekdayStr = ['日', ' 一', '二', '三', '四', '五', '六'];
 Page({
 
@@ -9,7 +9,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageData: {}, //列表数据
+    pageData: [
+              {
+                "images": [
+                  "http://pic2.zhimg.com/e97b08d1177ebc57bd9e9d8ddf17e055.jpg（显示图片）"
+                ],
+                "type": 0,                                  																												//保留字段（暂时传0） 
+                "id": 8966833,							  																												// 咨询ID
+                "title": "知乎好问题 · 时间管打算离开股份哈山东理工黑色柳丁家里开始打了个客户数量的开发卡萨丁厉害管理卡水电费拉时间到了房间拉萨的理最常见的误区有哪些？",  //咨询标题
+                "dateTime": '1小时前',																																			//咨询发布时间
+                "clicksum": '9999',																																		//咨询点击数
+                "typeName": "E园早报",																																		//咨询分类
+                "content": "知乎好问题 · 时间管打算离开股份哈山东理工黑色柳丁家里开始打了个客户数量的开发卡萨丁厉害管理卡水电费拉时间到了房间拉萨的理最常见的误区有哪些？" //咨询内容（暂时不显示，后期不确定）
+              }
+    ], //列表数据
     themeData: {}, //主题菜单数据
     sliderData: {}, //轮播图数据
     currentDateStr: '',
@@ -37,6 +50,7 @@ Page({
     ballOpacity: '.8',
     modalMsgHidden: true,
     themeId: 0,//当前主题id
+    lastthemeid:0,//当前主题最后ID
 
     id: null,
     //pageShow: 'display',
@@ -63,25 +77,34 @@ Page({
     var date = utils.getCurrentData();
     this.setData({ currentDateStr: date.year + '.' + date.month + '.' + date.day });
 
-    var _this = this;
-    _this.setData({ loading: true });
-    requests.getNewsLatest((data) => {
-      data = utils.correctData(data);
-      console.log(data);
-      //console.log( data.stories );
-      _this.setData({
-        sliderData: data.top_stories,
-        pageData: data.stories
-      });
-      _this.setData({ pageShow: 'block' });
-    }, null, () => {
-      _this.setData({ loading: false });
-    });
-
-    // //获取主题日报列表
-    // requests.getTheme((data) => {
-    //   _this.setData({ themeData: data.others });
-    // });
+    var that = this;
+    that.setData({ loading: true });
+    requests.request({
+      url: api.getTopInformationList(),
+      method: 'POST',
+      dataType: 'json',
+      data:{
+        type:'before',
+        themeid:1,
+        count:15
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.message != '成功') {
+          wx.showToast({
+            title: "获取咨询列表失败",
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          that.setData({
+            pageData: res.data.data,
+            lastthemeid:that.data.pageData[that.data.pageData.length-1].id,
+            themeid: that.data.pageData[0].id,
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -122,7 +145,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.loadingMoreEvent.call(this)
   },
 
   /**
@@ -131,34 +153,68 @@ Page({
   onShareAppMessage: function () {
   
   },
-  //列表加载更多
-  loadingMoreEvent: function (e) {
-    if (this.data.loadingMore) return;
-    console.log(this.data.currentDate);
-    var date = new Date(Date.parse(this.data.currentDate) - 1000 * 60 * 60 * 24);
-    var _this = this;
-    var pageData = [];
-
-    this.setData({ loadingMore: true });
-    updateRefreshIcon.call(this);
-    var y = date.getFullYear();
-    var m = (date.getMonth() + 1);
-    var d = date.getDate();
-    m = m > 9 ? m : '0' + m;
-    d = d > 9 ? d : '0' + d;
-    var dateStr = [y, m, d].join('');
-    requests.getBeforeNews(dateStr, (data) => {
-      data = utils.correctData(data);
-      console.log(data);
-      pageData = _this.data.pageData;
-      pageData.push({ type: '3', title: ([y, m, d].join('.') + '  星期' + weekdayStr[date.getDay()]) });
-      pageData = pageData.concat(data.stories);
-
-      _this.setData({ currentDate: date, pageData: pageData });
-    }, null, () => {
-      _this.setData({ loadingMore: false });
-    });
+  //刷新列表
+  refesh: function (e) {
+    that.setData({ loadingMore: true });
+    requests.request({
+      url: api.getTopInformationList(),
+      method: 'POST',
+      dataType: 'json',
+      data: {
+        type: 'before',
+        themeid: themeid,
+        count: 15
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.message != '成功') {
+          wx.showToast({
+            title: "获取咨询列表失败",
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          that.setData({
+            pageData: that.data.pageData.concat(res.data.data),
+            themeid: that.data.pageData[0].id,
+          })
+        }
+      }
+    })
+    that.setData({ loadingMore: false });
   },
+  //加载更多
+  loadMore: function (e) {
+    that.setData({ loadingMore: true });
+    requests.request({
+      url: api.getTopInformationList(),
+      method: 'POST',
+      dataType: 'json',
+      data: {
+        type: 'laster',
+        themeid: that.data.lastthemeid,
+        count: 15
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.message != '成功') {
+          wx.showToast({
+            title: "获取咨询列表失败",
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          that.setData({
+            pageData: that.data.pageData.concat(res.data.data),
+            lastthemeid: that.data.pageData[that.data.pageData.length - 1].id,
+          })
+        }
+      }
+    })
+    that.setData({ loadingMore: false });
+  },
+
+
   toDetailPage: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({

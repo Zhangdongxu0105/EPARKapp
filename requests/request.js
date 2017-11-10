@@ -34,6 +34,7 @@ var RequestError = (function () {
 })();
 
 function request(options) {
+  console.log(options)
     if (typeof options !== 'object') {
         var message = '请求传参应为 object 类型，但实际传了 ' + (typeof options) + ' 类型';
         throw new RequestError(constants.ERR_INVALID_PARAMS, message);
