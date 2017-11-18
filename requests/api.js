@@ -5,6 +5,8 @@ const API_V3 = API_BASE + '/3';
 const API_NEWS = API_V4 + '/news';
 const API_STORY = API_V4 + '/story';
 
+
+
 /**
  * 获取最新日报
  * @returns {string}
@@ -43,6 +45,14 @@ function getTopInformationr() {
  */
 function getTopInformationList() {
   return API_BASE + '/wx/information/list';
+}
+
+/**
+ * 获取咨询详情
+ * @returns {string}
+ */
+function getTopInformationDetail() {
+  return API_BASE + '/wx/information/detail';
 }
 
 
@@ -168,5 +178,6 @@ module.exports = {
     getBanner: getBanner,
     getActivityr: getActivityr,
     getTopInformationr: getTopInformationr,
-    getTopInformationList: getTopInformationList
+    getTopInformationList: getTopInformationList,
+    getTopInformationDetail: getTopInformationDetail
 };

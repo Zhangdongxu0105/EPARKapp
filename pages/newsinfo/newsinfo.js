@@ -1,6 +1,6 @@
-var requests = require('../../requests/request.js');
 var utils = require('../../utils/util.js');
-
+var requests = require('../../requests/request.js');
+var api = require('../../requests/api.js');
 Page({
   data: {
     id: "8857042", //当前日报id
@@ -11,51 +11,45 @@ Page({
     extraInfo: {},
     modalMsgHidden: true,
     pageShow: 'none',
-    isCollect: false//是否被收藏
+    isCollect: false,//是否被收藏
+    title:'',   //标题
+    miniText:'',//资讯摘要
+    img:'',	//图片url
+    typeName:'', //资讯类型
+    createTime:'',//创建时间
+    dateTime:'',   //1小时前，一分钟前，一周前
+    content:'',    //资讯内容
+    clicksum:''   //点击量
   },
 
   //获取列表残过来的参数 id：日报id， theme：是否是主题日报内容（因为主题日报的内容有些需要单独解析）
   onLoad: function (options) {
     var id = options.id;
-    var isTheme = options['theme'];
-    var pageData = wx.getStorageSync('pageData') || []
-    for (var i = 0; i < pageData.length; i++) {
-      if (pageData[i].id == id) {
-        this.setData({ isCollect: true });
-        break;
+    var that=this;
+    requests.request({
+      url: api.getTopInformationDetail(),
+      method: 'POST',
+      dataType: 'json',
+      data: { themeid:id},
+      success: function (res) {
+        console.log(res)
+        if (res.data.message != '成功') {
+          wx.showToast({
+            title: "获取资讯详情失败",
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          that.setData({
+            pageData: res.data.data
+          })
+        }
       }
-    }
-    this.setData({ id: id, isTheme: isTheme });
+    })
   },
 
   //加载日报数据
   onReady: function () {
-    loadData.call(this);
-  },
-  collectOrNot: function () {
-    var pageData = wx.getStorageSync('pageData') || []
-    console.log(pageData);
-    if (this.data.isCollect) {
-      for (var i = 0; i < pageData.length; i++) {
-        if (pageData[i].id == this.data.id) {
-          pageData.splice(i, 1);
-          this.setData({ isCollect: false });
-          break;
-        }
-      }
-    } else {
-      var images = new Array(this.data.news.image);
-      //var item ={id:e.currentTarget.dataset.id,title:this.data.title,images:images};
-      var item = { id: this.data.id, title: this.data.news.title, images: images };
-      console.log(item);
-      pageData.unshift(item);
-      this.setData({ isCollect: true });
-    }
-    try {
-      wx.setStorageSync('pageData', pageData);
-    } catch (e) {
-    }
-    console.log(pageData);
   },
   //跳转到评论页面
   toCommentPage: function (e) {

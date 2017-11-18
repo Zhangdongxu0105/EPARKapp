@@ -43,7 +43,7 @@ E园资讯
   </view> -->
    <view class="common-list">
     <block wx:key="id" wx:for="{{pageData}}">
-      <view class="list-item {{item.images[0] ? 'has-img': ''}}" wx:if="{{item.type != 3}}" data-id="{{item.id}}" bindtap="toDetailPage">
+      <view class="list-item {{item.img[0] ? 'has-img': ''}}" data-id="{{item.id}}" bindtap="toDetailPage">
         <view class="content">
         <!--标题  -->
           <view>
@@ -65,11 +65,11 @@ E园资讯
 
           <!--时间  -->
           <view  class='date_text'>
-            <text>{{item.dateTime}}</text>
+            <text>{{item.createTime}}</text>
           </view>
         </view>
         <!--图片  -->
-        <image wx:if="{{item.img[0]}}" src="{{item.img[0]}}" class="cover"></image>
+        <image wx:if="{{item.img}}" src="{{item.img}}" class="cover"></image>
         <!--标签  -->
         <view  class='label_text'>
             <text>{{item.typeName}}</text>

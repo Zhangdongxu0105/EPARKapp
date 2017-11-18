@@ -9,20 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageData: [
-              {
-                "images": [
-                  "http://pic2.zhimg.com/e97b08d1177ebc57bd9e9d8ddf17e055.jpg（显示图片）"
-                ],
-                "type": 0,                                  																												//保留字段（暂时传0） 
-                "id": 8966833,							  																												// 咨询ID
-                "title": "知乎好问题 · 时间管打算离开股份哈山东理工黑色柳丁家里开始打了个客户数量的开发卡萨丁厉害管理卡水电费拉时间到了房间拉萨的理最常见的误区有哪些？",  //咨询标题
-                "dateTime": '1小时前',																																			//咨询发布时间
-                "clicksum": '9999',																																		//咨询点击数
-                "typeName": "E园早报",																																		//咨询分类
-                "content": "知乎好问题 · 时间管打算离开股份哈山东理工黑色柳丁家里开始打了个客户数量的开发卡萨丁厉害管理卡水电费拉时间到了房间拉萨的理最常见的误区有哪些？" //咨询内容（暂时不显示，后期不确定）
-              }
-    ], //列表数据
+    pageData: [], //列表数据
     themeData: {}, //主题菜单数据
     sliderData: {}, //轮播图数据
     currentDateStr: '',
@@ -99,8 +86,8 @@ Page({
         } else {
           that.setData({
             pageData: res.data.data,
-            lastthemeid:that.data.pageData[that.data.pageData.length-1].id,
-            themeid: that.data.pageData[0].id,
+            lastthemeid: res.data.data[res.data.data.length-1].id,
+            themeid: res.data.data[0].id,
           })
         }
       }
