@@ -184,55 +184,53 @@ Page({
     
       // 此处需要先调用wx.login方法获取code，然后在服务端调用微信接口使用code换取下单用户的openId
       // 具体文档参考https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-login.html?t=20161230#wxloginobject
-
-      login.bindToken({
-        success: function (userInfo) {
-          wx.request({
-            url: postPay,
-            data: {
-              tel: self.data.tel,
-              // pay: self.data.money_array[self.data.paymoney]
-              pay: 0.01
-            },
-            method: 'POST',
-            dataType: 'json',
-            header: {
-              'content-type': 'application/json' // 默认值
-            },
-            success: function (res) {
-              if (res.data.message != '成功') {
-                wx.showToast({
-                  title: res.data.message,
-                  icon: 'success',
-                  duration: 2000
-                })
-              } else {
-                var payargs = res.data.result.payParam
-                wx.requestPayment({
-                  timeStamp: payargs.timeStamp,
-                  nonceStr: payargs.nonceStr,
-                  package: payargs.package,
-                  signType: payargs.signType,
-                  paySign: payargs.paySign
-                })
-                self.setData({
-                  loading: false
-                })
-                wx.navigateTo({
-                  url: '../ecar/ecar'
-                });
-              }
+      var token = login.getToken()
+      console.log(token)
+      if (token){
+        requests.request({
+          login: true,
+          url: postPay,
+          data: {
+            tel: self.data.tel,
+            // pay: self.data.money_array[self.data.paymoney]
+            pay: 0.01
+          },
+          method: 'POST',
+          success: function (res) {
+            console.log(res)
+            if (res.data.message != '成功') {
+              console.log(res.data.message)
+              wx.showToast({
+                title: res.data.message,
+                icon: 'success',
+                duration: 2000
+              })
+            } else {
+              var payargs = res.data.result.payParam
+              wx.requestPayment({
+                timeStamp: payargs.timeStamp,
+                nonceStr: payargs.nonceStr,
+                package: payargs.package,
+                signType: payargs.signType,
+                paySign: payargs.paySign
+              })
+              self.setData({
+                loading: false
+              })
+              wx.navigateTo({
+                url: '../ecar/ecar'
+              });
             }
-          })
-        },
-        fail: function (err) {
-          console.log('登录失败', err);
-          console.log('err:', err)
-          self.setData({
-            loading: true
-          })
-        }
-      });
+          }
+        })
+      }
+      else{
+        wx.showToast({
+          title: '用户没有登录，请先进入‘我的’进行登录',
+          icon: 'success',
+          duration: 2000
+        })
+      }
       // app.getUserOpenId(function (err, openid) {
       //   if (!err) {
       //     wx.request({

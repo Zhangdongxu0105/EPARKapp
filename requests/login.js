@@ -79,48 +79,20 @@ var getToken = function getToken(options) {
         options.fail(wxLoginError);
         return;
       }
+
       wx.request({
-        url: options.loginUrl,
-        method: options.method,
-        data: { code: wxLoginResult.code },
+        url: api.bindToken(),
+        method: "POST",
+        data: { name: "123456", openCode: wxLoginResult.code, mobile: "111111111111" },
         success: function (result) {
           var data = result.data;
-          console.log(data)
           // 成功地响应会话信息
-          if (data.message != '成功') {
-            if (data.openid) {
-              wx.request({
-                url: api.postToken(),
-                method: "GET",
-                data: { name: "123456", openCode: data.openid, mobile: "mobile111111111111" },
-                success: function (result) {
-                  var data = result.data;
-                  // 成功地响应会话信息
-                  if (data.message != 'ok') {
-                    if (data.token) {
-                      console.log(data.token)
-                      Session.set(data.token);
-                      return data.token
-                    } else {
-                      var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
-                      var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
-                      options.fail(noSessionError);
-                    }
-
-                    // 没有正确响应会话信息
-                  } else {
-                    var errorMessage = '登录请求没有包含会话响应，请确保服务器处理 `' + options.loginUrl + '` 的时候正确使用了 SDK 输出登录结果';
-                    var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
-                    options.fail(noSessionError);
-                  }
-                },
-
-                // 响应错误
-                fail: function (loginResponseError) {
-                  var error = new LoginError(constants.ERR_LOGIN_FAILED, '登录失败，可能是网络错误或者服务器发生异常');
-                  options.fail(error);
-                },
-              });
+          console.log(api.bindToken(), data)
+          if (data.message == '成功') {
+            if (data.token) {
+              Session.set(data.token);
+              console.log('token:', data.token)
+              return Session.get();
             } else {
               var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
               var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
@@ -141,6 +113,39 @@ var getToken = function getToken(options) {
           options.fail(error);
         },
       });
+
+
+      // wx.request({
+      //   url: options.loginUrl,
+      //   method: options.method,
+      //   data: { code: wxLoginResult.code },
+      //   success: function (result) {
+      //     var data = result.data;
+      //     console.log(data)
+      //     // 成功地响应会话信息
+      //     if (data.openid) {
+      //       if (data.openid) {
+
+      //       } else {
+      //         var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
+      //         var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
+      //         options.fail(noSessionError);
+      //       }
+
+      //       // 没有正确响应会话信息
+      //     } else {
+      //       var errorMessage = '登录请求没有包含会话响应，请确保服务器处理 `' + options.loginUrl + '` 的时候正确使用了 SDK 输出登录结果';
+      //       var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
+      //       options.fail(noSessionError);
+      //     }
+      //   },
+
+      //   // 响应错误
+      //   fail: function (loginResponseError) {
+      //     var error = new LoginError(constants.ERR_LOGIN_FAILED, '登录失败，可能是网络错误或者服务器发生异常');
+      //     options.fail(error);
+      //   },
+      // });
     })
     // 请求服务器登录地址，获得会话信息
   }
@@ -300,4 +305,5 @@ module.exports = {
     login: login,
     setLoginUrl: setLoginUrl,
     bindToken: bindToken,
+    getToken: getToken
 };
