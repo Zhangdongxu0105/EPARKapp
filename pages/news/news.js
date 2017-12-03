@@ -71,7 +71,7 @@ Page({
       method: 'POST',
       dataType: 'json',
       data:{
-        type:'before',
+        type:'home',
         themeid:1,
         count:15
       },
@@ -148,7 +148,7 @@ Page({
       method: 'POST',
       dataType: 'json',
       data: {
-        type: 'before',
+        type: 'laster',
         themeid: themeid,
         count: 15
       },
@@ -178,7 +178,7 @@ Page({
       method: 'POST',
       dataType: 'json',
       data: {
-        type: 'laster',
+        type: 'before',
         themeid: that.data.lastthemeid,
         count: 15
       },

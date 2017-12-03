@@ -78,7 +78,7 @@ function request(options) {
 
         wx.request(utils.extend({}, options, {
             // header: utils.extend({}, originHeader, authHeader),
-          header: { 'Cookie': 'JSESSIONID=' + Session.get()},
+          header: { 'Cookie': 'token=' + Session.get()},
             success: function (response) {
                 var data = response.data;
 

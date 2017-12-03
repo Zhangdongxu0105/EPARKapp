@@ -1,9 +1,9 @@
 <!--pages/news/news.wxml-->
-<scroll-view wx:if="{{themeId==0}}" scroll-y="true" style="height:100%;width:100%;display:{{pageShow}}" bindscrolltoupper="refesh" bindscrolltolower="loadMore">
+<scroll-view wx:if="{{themeId==0}}" scroll-y="true" style="height:100%;width:100%" bindscrolltoupper="refesh" bindscrolltolower="loadMore">
    <view class="common-list">
     <block wx:key="id" wx:for="{{pageData}}">
     <view class="common-list1">
-      <view class="list-item {{item.img[0] ? 'has-img': ''}}" data-id="{{item.id}}" bindtap="toDetailPage">
+      <view class="list-item {{item.imgs[0] ? 'has-img': ''}}" data-id="{{item.id}}" bindtap="toDetailPage">
         <view class="content">
         <!--标题  -->
           <view>
@@ -16,14 +16,14 @@
           </view> -->
         </view>
         <!--图片  -->
-        <view class="container_cover1" wx:if="{{item.img.length==1}}">
-          <image  class="cover1" wx:for="{{item.img}}" wx:key='' src="{{item}}" ></image>
+        <view class="container_cover1" wx:if="{{item.imgs.length==1}}">
+          <image  class="cover1" wx:for="{{item.imgs}}" wx:key='' src="{{item}}" ></image>
         </view>
-        <view class="container_cover2" wx:elif="{{item.img.length==2}}">
-          <image  class="cover2" wx:for="{{item.img}}" wx:key='' src="{{item}}" ></image>
+        <view class="container_cover2" wx:elif="{{item.imgs.length==2}}">
+          <image  class="cover2" wx:for="{{item.imgs}}" wx:key='' src="{{item}}" ></image>
         </view>
         <view class="container" wx:else>
-          <image  class="cover" wx:for="{{item.img}}" wx:key='' src="{{item}}" ></image>
+          <image  class="cover" wx:for="{{item.imgs}}" wx:key='' src="{{item}}" ></image>
         </view>
 
         <view  class="container1">

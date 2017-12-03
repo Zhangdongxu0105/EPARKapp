@@ -28,9 +28,9 @@ Page({
     var that=this;
     requests.request({
       url: api.getTopInformationDetail(),
-      method: 'POST',
+      method: 'GET',
       dataType: 'json',
-      data: { themeid:id},
+      data: { id:id},
       success: function (res) {
         console.log(res)
         if (res.data.message != '成功') {

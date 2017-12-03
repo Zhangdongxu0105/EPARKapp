@@ -86,7 +86,7 @@ function bindToken() {
  * @returns {string}
  */
 function postPay() {
-  return API_BASE + '/epark/order';
+  return API_BASE + '/wx/order';
 }
 
 
